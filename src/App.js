@@ -2,6 +2,9 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import HomeScreen from './containers/HomeScreen'
+import LogInScreen from './containers/LogInScreen'
+import GuestHomeScreen from './containers/GuestHomeScreen'
 const HOTEL_API = 'http://localhost:3000/hotels'
 const GUEST_API = 'http://localhost:3000/guests'
 const LOGIN = 'http://localhost:3000/login'
@@ -9,7 +12,8 @@ export default class App extends React.Component {
 
   state = {
     hotels: [],
-    guest: null
+    guest: null,
+    homeScreenClick: false
   }
 
   componentDidMount(){
@@ -18,7 +22,7 @@ export default class App extends React.Component {
       .then(hotels => this.setState({hotels}))
   }
 
-  findGuest = (name, hotel_booking_id) => {
+  findGuest = (guest_name, hotel_booking_id) => {
     fetch(LOGIN ,
       {
           method: 'POST',
@@ -26,31 +30,24 @@ export default class App extends React.Component {
                       'Content-Type': 'application/json'
                    },
           body: JSON.stringify({
-                      name: name,
+                      guest_name: guest_name,
                       hotel_booking_id: hotel_booking_id
                 })
       })
         .then( resp => resp.json() )
-        .then( student => this.setState( {guest} ) )
+        .then( guest => this.setState( {guest} ) )
+  }
+
+  handleHomeScreenClick = () => {
+    this.setState({homeScreenClick: true})
   }
 
   render () {
+    const {homeScreenClick} = this.state
+    const {findGuest} = this
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {!homeScreenClick ? <HomeScreen handleClick={this.handleHomeScreenClick} /> : <LogInScreen findGuest={findGuest}/>}
       </div>
     );
   }
