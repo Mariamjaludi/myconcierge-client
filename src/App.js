@@ -35,7 +35,7 @@ export default class App extends React.Component {
                 })
       })
         .then( resp => resp.json() )
-        .then( guest => this.setState( {guest} ) )
+        .then( guest => this.setState( {guest} ) )  
   }
 
   handleHomeScreenClick = () => {
@@ -43,11 +43,12 @@ export default class App extends React.Component {
   }
 
   render () {
-    const {homeScreenClick} = this.state
+    const {homeScreenClick, guest, hotels} = this.state
     const {findGuest} = this
     return (
       <div className="App">
-        {!homeScreenClick ? <HomeScreen handleClick={this.handleHomeScreenClick} /> : <LogInScreen findGuest={findGuest}/>}
+        { !guest ?
+          (!homeScreenClick ? <HomeScreen handleClick={this.handleHomeScreenClick} /> : <LogInScreen findGuest={findGuest}/>) : <GuestHomeScreen hotel={hotels[0]} guest={guest}/>}
       </div>
     );
   }
