@@ -1,15 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import HomeScreen from './components/HomeScreen'
+import LoginScreen from './containers/LoginScreen'
+import GuestHomeScreen from './containers/GuestHomeScreen'
+
 const HOTEL_API = 'http://localhost:3000/hotels'
-const GUEST_API = 'http://localhost:3000/guests'
+// const GUEST_API = 'http://localhost:3000/guests'
 const LOGIN = 'http://localhost:3000/login'
 export default class App extends React.Component {
 
   state = {
     hotels: [],
-    guest: null
+    guest: null,
+    homeScreenClick: false
   }
 
   componentDidMount(){
@@ -34,8 +38,22 @@ export default class App extends React.Component {
         .then( guest => this.setState( {guest} ) )
   }
 
-  renderFunction = () => {
+  handleHomeScreenClick = () => {
+    this.setState({homeScreenClick: true})
+  }
 
+  renderFunction = () => {
+    const {homeScreenClick, guest, hotels} = this.state
+    const {findGuest, handleHomeScreenClick} = this
+    if (!guest) {
+      if (!homeScreenClick) {
+        return <HomeScreen handleClick={handleHomeScreenClick}/>
+      } else {
+        return <LoginScreen findGuest={findGuest}/>
+      }
+    } else {
+      return <GuestHomeScreen hotel={hotels[0]} guest={guest}/>
+    }
   }
 
   render () {
