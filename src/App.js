@@ -35,20 +35,34 @@ export default class App extends React.Component {
                 })
       })
         .then( resp => resp.json() )
-        .then( guest => this.setState( {guest} ) )  
+        .then( guest => this.setState( {guest} ) )
   }
 
   handleHomeScreenClick = () => {
     this.setState({homeScreenClick: true})
   }
 
-  render () {
+  renderFunction = () => {
     const {homeScreenClick, guest, hotels} = this.state
     const {findGuest} = this
+
+    if (!guest) {
+      if (!homeScreenClick){
+        return <HomeScreen handleClick={this.handleHomeScreenClick} />
+      } else {
+        return <LogInScreen findGuest={findGuest}/>
+      }
+    }
+    else {
+      return <GuestHomeScreen hotel={hotels[0]} guest={guest}/>
+    }
+  }
+
+
+  render () {
     return (
       <div className="App">
-        { !guest ?
-          (!homeScreenClick ? <HomeScreen handleClick={this.handleHomeScreenClick} /> : <LogInScreen findGuest={findGuest}/>) : <GuestHomeScreen hotel={hotels[0]} guest={guest}/>}
+        {this.renderFunction()}
       </div>
     );
   }

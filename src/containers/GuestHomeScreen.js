@@ -1,13 +1,30 @@
 import React from 'react'
-import AmenityCard from '../components/AmenityCard'
-// import '../HomeScreen.css';
+import AmenitiesContainer from './AmenitiesContainer'
+import Header from '../components/Header.js'
+import Footer from '../components/Footer.js'
+import '../GuestHomeScreen.css';
+
 export default class GuestHomeScreen extends React.Component {
+
+  state = {
+    amenity: null
+  }
+
+  getClickedAmenity = (amenity) => {
+    this.setState({amenity})
+      // debugger
+  }
 
   render (){
     const {hotel} = this.props
+    const {getClickedAmenity} = this
     return (
-      <div>
-        { hotel.amenities.map ( amenity => <AmenityCard amenity={amenity}/> ) }
+      <div className="guest-home-screen-content">
+
+        <Header />
+        <AmenitiesContainer getClickedAmenity={getClickedAmenity} hotel={hotel}/>
+        <Footer />
+
   	  </div>
     )
   }
