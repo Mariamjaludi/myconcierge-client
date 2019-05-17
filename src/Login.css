@@ -1,0 +1,43 @@
+.login-content {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /*4 columns, each column is the same width */
+  grid-auto-rows: auto;
+  /* grid-template-rowhome-screen-s: repeat(3, 1fr); */
+  grid-template-areas:
+  "header header header header"
+  ". . . ."
+  ". form form ."
+  ". . . ."
+  "footer footer footer footer";
+  grid-gap: 10px;
+}
+
+.header {
+  grid-area: header;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 1fr;
+  grid-template-areas:
+  ". logo hotel-name . . clock";
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.login-form{
+  grid-area: form;
+}
+
+.header .logo {
+  grid-area: logo
+}
+
+.header .hotel-name{
+  grid-area: hotel-name;
+}
+
+.header .clock{
+  grid-area: clock;
+}

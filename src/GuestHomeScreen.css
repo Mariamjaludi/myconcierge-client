@@ -2,44 +2,48 @@
   height: 100vh;
   display: grid;
   grid-template-columns: repeat(4, 1fr); /*4 columns, each column is the same width */
-  grid-auto-rows: minmax( 100px, auto);
+  grid-template-rows: 100px 1fr 1fr 100px;
   /* grid-template-rowhome-screen-s: repeat(3, 1fr); */
   grid-template-areas:
   "header header header header"
-  "amenities amenities amenities amenities"
-  "amenities amenities amenities amenities"
-  "amenities amenities amenities amenities"
+  ". amenities amenities ."
+  ". amenities amenities ."
+  ". . . ."
   "footer footer footer footer";
   grid-gap: 10px
 }
 
 .header{
+  height: 100px;
   grid-area: header;
   border: 1px solid #000;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 1fr;
   grid-template-areas:
-  "p . . . . clock";
+  "logo hotel-name . . . clock";
 }
 
-.header>*{
-  background: #F00
+.header .logo {
+  grid-area: logo
 }
 
-.header div{
-  grid-area: p;
-  border: 1px solid #000;
+.header .hotel-name{
+  grid-area: hotel-name;
 }
 
 .header .clock{
   grid-area: clock;
 }
+.header .clock{
+  grid-area: clock;
+}
 
 .amenities{
+  align-content: center;
   grid-area: amenities;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 100px);
   grid-gap: 10px;
   grid-template-rows: 1fr;
 }

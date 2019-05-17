@@ -6,7 +6,10 @@ export default class HomeScreenFooter extends React.Component {
     const {handleClick} = this.props
     return(
       <div className='home-screen-footer'>
-        <div>footer</div>
+        <div>
+          <strong>Test Hotel</strong>
+          <p>Concierge Services</p>
+        </div>
         <button className="next-button" onClick={handleClick} type="button">log in</button>
   	  </div>
     )

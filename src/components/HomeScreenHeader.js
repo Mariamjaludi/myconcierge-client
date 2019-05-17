@@ -5,7 +5,7 @@ export default class HomeScreenHeader extends React.Component {
   render (){
     return(
       <div className='home-screen-header'>
-      header
+      <div className='logo'>Logo</div>
   	  </div>
     )
   }
