@@ -1,8 +1,32 @@
-import React from 'react'
-
+import React from "react";
+import MenuItem from "../components/MenuItem";
 export default class MenuContainer extends React.Component {
+  renderMenuItems = food => {
+    const { collectOrder } = this.props;
+    return (
+      <div>
+        {food.map(food => (
+          <MenuItem food={food} collectOrder={collectOrder} />
+        ))}
+      </div>
+    );
+  };
 
-  render () {
-    return <div></div>
+  render() {
+    const { services } = this.props;
+    const { renderMenuItems } = this;
+    const starters = services.filter(service => service.service_type === "Starter");
+    const mains = services.filter(service => service.service_type === "Main");
+    const desserts = services.filter(service => service.service_type === "Dessert");
+    return (
+      <div>
+        <div>STARTERS</div>
+        {renderMenuItems(starters)}
+        <div>MAIN</div>
+        {renderMenuItems(mains)}
+        <div>DESSERT</div>
+        {renderMenuItems(desserts)}
+      </div>
+    );
   }
 }

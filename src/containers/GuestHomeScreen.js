@@ -13,6 +13,10 @@ export default class GuestHomeScreen extends React.Component {
     this.setState({ amenity });
   };
 
+  clearAmenity = () => {
+    this.setState({amenity: null})
+  }
+
   createBooking = (service, booking_date, booking_time) => {
     const { guest } = this.props
     fetch(BOOKING_API, {
@@ -32,7 +36,7 @@ export default class GuestHomeScreen extends React.Component {
   };
 
   renderFunction = () => {
-    const { getClickedAmenity, createBooking } = this;
+    const { getClickedAmenity, createBooking, clearAmenity } = this;
     const { hotel, guest } = this.props;
     const { amenity } = this.state;
     if (!amenity) {
@@ -48,6 +52,7 @@ export default class GuestHomeScreen extends React.Component {
           createBooking={createBooking}
           guest={guest}
           services={amenity.services}
+          clearAmenity={clearAmenity}
         />
       );
     }

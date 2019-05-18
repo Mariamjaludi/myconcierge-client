@@ -1,15 +1,34 @@
 import React from "react";
 import DiningScreen2 from "./DiningScreen2";
 import DiningScreen3 from "./DiningScreen3";
+import DiningScreen4 from "./DiningScreen4";
 
 export default class DiningScreen1 extends React.Component {
   state = {
-    diningChoice: null
+    diningChoice: null,
+    order: [],
+    switchToDining4: false
   };
 
   handleClick = event => {
     this.setState({
-      choice: event.target.id
+      diningChoice: event.target.id
+    });
+  };
+
+  saveOrder = order => {
+    this.setState({
+      order: order,
+      switchToDining4: true
+    });
+  };
+
+  editOrder = food => {
+    // debugger
+    const { order } = this.state;
+    const filteredFood = order.filter(order => order !== food);
+    this.setState({
+      order: filteredFood
     });
   };
 
@@ -37,8 +56,9 @@ export default class DiningScreen1 extends React.Component {
   };
 
   renderFunction = () => {
-    const { services, guest, createBooking } = this.props;
-    const { diningChoice } = this.state;
+    const { services, guest, createBooking, clearAmenity } = this.props;
+    const { diningChoice, switchToDining4, order } = this.state;
+    const { saveOrder, editOrder } = this;
     if (!diningChoice) {
       return this.renderRoomServiceOrReserveTable();
     } else if (diningChoice === "reserve-table") {
@@ -50,22 +70,31 @@ export default class DiningScreen1 extends React.Component {
         />
       );
     } else if (diningChoice === "room-service") {
-      return (
-        <DiningScreen3
-          services={services}
-          guest={guest}
-          createBooking={createBooking}
-        />
-      );
+      if (!switchToDining4) {
+        return (
+          <DiningScreen3
+            services={services}
+            guest={guest}
+            saveOrder={saveOrder}
+          />
+        );
+      } else {
+        return (
+          <DiningScreen4
+            editOrder={editOrder}
+            order={order}
+            createBooking={createBooking}
+            clearAmenity={clearAmenity}
+          />
+        );
+      }
     }
   };
 
   render() {
     return (
       <div>
-        <div>header</div>
         {this.renderFunction()}
-        <div>footer</div>
       </div>
     );
   }
