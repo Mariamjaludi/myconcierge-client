@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "react": "^16.8.6",
+    "react-clock": "^2.3.0",
     "react-dom": "^16.8.6",
+    "react-live-clock": "^3.1.0",
     "react-scripts": "3.0.1"
   },
   "scripts": {
