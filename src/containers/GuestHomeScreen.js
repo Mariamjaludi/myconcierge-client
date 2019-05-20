@@ -1,6 +1,6 @@
 import React from "react";
 import AmenitiesContainer from "./AmenitiesContainer";
-import DiningScreen1 from "./DiningScreen1";
+import DiningScreen from "./DiningScreen";
 
 const BOOKING_API = "http://localhost:3000/bookings";
 export default class GuestHomeScreen extends React.Component {
@@ -17,18 +17,22 @@ export default class GuestHomeScreen extends React.Component {
     this.setState({amenity: null})
   }
 
-  createBooking = (service, booking_date, booking_time) => {
+  createBooking = (service, booking_date, booking_time, num_of_guests = null) => {
     const { guest } = this.props
+    let service_id = service.id;
+    let guest_id = guest.id;
+    // debugger
     fetch(BOOKING_API, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        service_id: service.id,
-        guest_id: guest.id,
-        booking_date: booking_date,
-        booking_time: booking_time
+        service_id,
+        guest_id,
+        booking_date,
+        booking_time,
+        num_of_guests
       })
     })
       .then(resp => resp.json())
@@ -48,7 +52,7 @@ export default class GuestHomeScreen extends React.Component {
       );
     } else if (amenity.amenity_name === "Restaurant") {
       return (
-        <DiningScreen1
+        <DiningScreen
           createBooking={createBooking}
           guest={guest}
           services={amenity.services}
