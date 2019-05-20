@@ -21,11 +21,11 @@ export default class LoginScreen extends React.Component {
     return (
       <div>
         <form className='login-form' onSubmit={ handleSubmit }>
-          <label htmlFor="guest_name">Guest Name</label>
+          <label htmlFor="guest_name">Guest Name </label>
           <input onChange={ handleChange } type="text" name="guest_name" placeholder="Guest Name"></input>
-          <label htmlFor="hotel_booking_id">Hotel Booking Id</label>
+          <label htmlFor="hotel_booking_id">Hotel Booking Id </label>
           <input onChange={ handleChange } type="text" name="hotel_booking_id" placeholder="Hotel Booking Id"></input>
-          <input type="submit" value="Log In"></input>
+          <input className="next-button" type="submit" value="→"></input>
         </form>
       </div>
     )

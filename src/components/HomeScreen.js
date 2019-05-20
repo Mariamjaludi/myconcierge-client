@@ -10,13 +10,13 @@ export default class HomeScreen extends React.Component {
     return (
       <div className="home-screen-content">
         <div>header</div>
-        <DigitalClock className="clock" format={'HH:mm:ss'} ticking={true} timezone={'GB'} />
+        <DigitalClock className="clock" format={'HH:mm'} ticking={true} timezone={'GB'} />
           <div className='home-screen-footer'>Footer
           <div>
             <strong>Test Hotel</strong>
             <p>Concierge Services</p>
           </div>
-          <button className="next-button" onClick={handleClick} type="button">log in</button>
+          <button className="next-button" onClick={handleClick} type="button">→</button>
     	  </div>
   	  </div>
     )

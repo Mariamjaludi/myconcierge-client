@@ -28,8 +28,14 @@ export default class DiningScreen4 extends React.Component {
     clearAmenity()
   }
 
+  orderSum = () => {
+    let sum = 0
+    this.props.order.forEach(order => sum = sum + order.price)
+    return sum
+  }
+
   render(){
-    const {handleTimeChange, handleDateChange, handleSubmit} = this
+    const {handleTimeChange, handleDateChange, handleSubmit, orderSum} = this
     const {order, editOrder} = this.props
     return (
       <div>
@@ -43,6 +49,7 @@ export default class DiningScreen4 extends React.Component {
             <p>Your Order:</p>
             <DiningOrderContainer order={order} editOrder={editOrder}/>
           </div>
+          <div>Total: {orderSum()}</div>
           <input type="submit" value="ORDER"></input>
         </form>
       </div>

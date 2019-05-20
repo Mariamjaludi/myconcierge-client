@@ -31,3 +31,38 @@
     transform: rotate(360deg);
   }
 }
+
+.next-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 15px;
+  text-align: center;
+}
+
+.amenity-card {
+  font-size: ;
+  padding: 10px;
+  margin: 10px;
+  width: 20%;
+  height: 200px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  display: inline-block;
+  text-align: center;
+}
+
+.login-form {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #000;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.7)
+}
+
+.home-screen-content .clock {
+  font-size: 100px;
+}
+
+.login-form input, label {
+}
