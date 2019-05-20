@@ -8,18 +8,9 @@ import Header from './Header';
 
 export default class HomeScreen extends React.Component {
 
-  getHotelName = () => {
-    const {hotel} = this.props
-    if (hotel){
-      return hotel.hotel_name
-    }
-    else {
-      return "Hotel Name"
-    }
-  }
   render(){
-    const {handleClick} = this.props
-    let hotelName = this.getHotelName()
+    const {handleClick, getHotelName} = this.props
+    let hotelName = getHotelName()
     return (
       <div className="home-screen">
         <Header hotel={hotelName}/>

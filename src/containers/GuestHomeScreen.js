@@ -1,12 +1,15 @@
 import React from "react";
 import AmenitiesContainer from "./AmenitiesContainer";
 import DiningScreen from "./DiningScreen";
+import Header from "../components/Header"
+import Explore from "../components/Explore"
 
 const BOOKING_API = "http://localhost:3000/bookings";
 export default class GuestHomeScreen extends React.Component {
   state = {
     amenity: null,
-    booking: null
+    booking: null,
+    explore: false
   };
 
   getClickedAmenity = amenity => {
@@ -40,29 +43,45 @@ export default class GuestHomeScreen extends React.Component {
   };
 
   renderFunction = () => {
-    const { getClickedAmenity, createBooking, clearAmenity } = this;
+    const { getClickedAmenity, createBooking, clearAmenity, exploreClicked } = this;
     const { hotel, guest } = this.props;
-    const { amenity } = this.state;
-    if (!amenity) {
+    const { amenity, explore } = this.state;
+    if (!amenity && !explore) {
       return (
         <AmenitiesContainer
           getClickedAmenity={getClickedAmenity}
           hotel={hotel}
+          exploreClicked={exploreClicked}
         />
       );
-    } else if (amenity.amenity_name === "Restaurant") {
-      return (
-        <DiningScreen
-          createBooking={createBooking}
-          guest={guest}
-          services={amenity.services}
-          clearAmenity={clearAmenity}
-        />
-      );
+    } else if (amenity) {
+      if (amenity.amenity_name === "Restaurant") {
+        return (
+          <DiningScreen
+            createBooking={createBooking}
+            guest={guest}
+            services={amenity.services}
+            clearAmenity={clearAmenity}
+          />
+        );
+      }
+    } else if (explore) {
+      return <Explore />
     }
   };
 
+  exploreClicked = () => {
+    this.setState({ explore: true})
+  }
+
   render() {
-    return this.renderFunction();
+    const {getHotelName} = this.props;
+    let hotelName = getHotelName()
+    return (
+      <div className="guest-home-screen">
+        <Header className="header" hotel={hotelName}/>
+        {this.renderFunction()}
+      </div>
+    )
   }
 }

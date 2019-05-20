@@ -35,7 +35,7 @@ export default class DiningScreen extends React.Component {
   renderRoomServiceOrReserveTable = () => {
     const { handleClick } = this;
     return (
-      <div>
+      <div className="dining-screen">
         <div className="dining-screen-header">DINING</div>
         <div className="room-service" id="room-service" onClick={handleClick}>
           ROOM SERVICE
@@ -44,14 +44,16 @@ export default class DiningScreen extends React.Component {
         <div className="reserve-table" id="reserve-table" onClick={handleClick}>
           RESERVE A TABLE
         </div>
-        <button
-          className="next-button"
-          onClick={this.handleReturnButtonClick}
-          type="button"
-        >
-        ←
-        </button>
-        <span>MAIN MENU</span>
+        <div className="dining-footer">
+          <button
+            className="next-button"
+            onClick={this.handleReturnButtonClick}
+            type="button"
+          >
+          ←
+          </button>
+          <span>MAIN MENU</span>
+        </div>
       </div>
     );
   };

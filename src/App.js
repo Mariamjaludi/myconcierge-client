@@ -44,17 +44,27 @@ export default class App extends React.Component {
 
   renderFunction = () => {
     const { homeScreenClick, guest, hotels } = this.state;
-    const { findGuest, handleHomeScreenClick } = this;
+    const { findGuest, handleHomeScreenClick, getHotelName } = this;
     if (!guest) {
       if (!homeScreenClick) {
-        return <HomeScreen hotel={hotels[0]} className="home-screen" handleClick={handleHomeScreenClick} />;
+        return <HomeScreen hotel={hotels[0]} getHotelName={getHotelName} className="home-screen" handleClick={handleHomeScreenClick} />;
       } else {
-        return <LoginScreen hotel={hotels[0]} findGuest={findGuest} />;
+        return <LoginScreen hotel={hotels[0]} getHotelName={getHotelName} findGuest={findGuest} />;
       }
     } else {
-      return <GuestHomeScreen hotel={hotels[0]} guest={guest} />;
+      return <GuestHomeScreen getHotelName={getHotelName} hotel={hotels[0]} guest={guest} />;
     }
   };
+
+  getHotelName = () => {
+    let hotel = this.state.hotels[0];
+    if (hotel){
+      return hotel.hotel_name
+    }
+    else {
+      return "Hotel Name"
+    }
+  }
 
   render() {
     return (
