@@ -33,23 +33,26 @@ export default class DiningScreen extends React.Component {
   };
 
   renderRoomServiceOrReserveTable = () => {
+    const { handleClick } = this;
     return (
-      <div>
+      <div className="dining-screen">
         <div className="dining-screen-header">DINING</div>
-        <div
-          className="room-service"
-          id="room-service"
-          onClick={this.handleClick}
-        >
+        <div className="room-service" id="room-service" onClick={handleClick}>
           ROOM SERVICE
         </div>
         <p>-or-</p>
-        <div
-          className="reserve-table"
-          id="reserve-table"
-          onClick={this.handleClick}
-        >
+        <div className="reserve-table" id="reserve-table" onClick={handleClick}>
           RESERVE A TABLE
+        </div>
+        <div className="dining-footer">
+          <button
+            className="next-button"
+            onClick={this.handleReturnButtonClick}
+            type="button"
+          >
+          ←
+          </button>
+          <span>MAIN MENU</span>
         </div>
       </div>
     );
@@ -58,7 +61,7 @@ export default class DiningScreen extends React.Component {
   renderFunction = () => {
     const { services, guest, createBooking, clearAmenity } = this.props;
     const { diningChoice, switchToDining4, order } = this.state;
-    const { saveOrder, editOrder } = this;
+    const { saveOrder, editOrder, handleReturnButtonClick } = this;
     if (!diningChoice) {
       return this.renderRoomServiceOrReserveTable();
     } else if (diningChoice === "reserve-table") {
@@ -67,6 +70,7 @@ export default class DiningScreen extends React.Component {
           services={services}
           guest={guest}
           createBooking={createBooking}
+          handleReturnButtonClick={handleReturnButtonClick}
         />
       );
     } else if (diningChoice === "room-service") {
@@ -76,6 +80,7 @@ export default class DiningScreen extends React.Component {
             services={services}
             guest={guest}
             saveOrder={saveOrder}
+            handleReturnButtonClick={handleReturnButtonClick}
           />
         );
       } else {
@@ -91,11 +96,11 @@ export default class DiningScreen extends React.Component {
     }
   };
 
+  handleReturnButtonClick = () => {
+    this.props.clearAmenity()
+  }
+
   render() {
-    return (
-      <div>
-        {this.renderFunction()}
-      </div>
-    );
+    return <div>{this.renderFunction()}</div>;
   }
 }

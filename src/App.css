@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -36,8 +37,10 @@
   width: 40px;
   height: 40px;
   border-radius: 20px;
+  border: 1px solid #000;
   font-size: 15px;
   text-align: center;
+  background-color: Transparent;
 }
 
 .amenity-card {
@@ -52,17 +55,239 @@
   text-align: center;
 }
 
-.login-form {
+.explore-card {
+  font-size: ;
   padding: 10px;
   margin: 10px;
+  width: 20%;
+  height: 200px;
   border: 1px solid #000;
+  border-radius: 5px;
   display: inline-block;
-  background: rgba(255, 255, 255, 0.7)
+  text-align: center;
+}
+
+
+.home-screen {
+  /* height: 100vh; */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto 1fr 1fr 1fr 100px;
+  grid-template-areas:
+  "header header header header"
+  ". . . ."
+  ". content content ."
+  ". . . ."
+  "footer footer footer footer"
+  ;
+}
+
+.header {
+  grid-area: header;
+  display: grid;
+  grid-template-columns: auto auto 1fr 1fr 1fr auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "logo hotel-name-cs . . . date-time";
+}
+
+.home-screen-content {
+  grid-area: content;
+}
+
+.home-screen-footer {
+  grid-area: footer;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "hotel-name-footer ."
+  "next-button ."
+  "empty empty"
+}
+
+.home-screen-footer .empty-space {
+  grid-area: empty;
+}
+
+.home-screen-footer .hotel-name-cs {
+  display: inline-block;
+  grid-area: hotel-name-footer;
+  padding: 10px;
+  font-size: 12px;
+  text-align: left;
+  margin-left: 15px;
+}
+
+.home-screen-footer .next-button {
+  grid-area: next-button;
+  /* margin: 10px; */
+  margin-left: 20px;
 }
 
 .home-screen-content .clock {
-  font-size: 100px;
+  font-size: 150px;
+  color: #FFF;
+  display: block;
+  /* font-family: sans-serif; */
+}
+
+.home-screen-content .date {
+  font-size: 20px;
+  color: #FFF;
+  display: block;
 }
 
 .login-form input, label {
+}
+
+.header .hotel-logo {
+  grid-area: logo;
+  width: 50px;
+  height: 44px;
+  background-color: Transparent;
+  background: url(./assets/images/logo_transparent.png) no-repeat center;
+  background-size: 50px;
+  /* border: 1px solid #000; */
+  display: inline-block;
+  padding: 10px;
+  margin-left: 15;
+}
+
+.header .hotel-name-cs {
+  display: inline-block;
+  grid-area: hotel-name-cs;
+  padding: 10px;
+  font-size: 12px;
+  text-align: left;
+}
+
+.header .header-time-date {
+  display: inline-block;
+  grid-area: date-time;
+  padding: 10px;
+  font-size: 12px;
+  text-align: right;
+}
+
+.home-screen, .login-screen {
+  height: 100vh;
+  background: url(./assets/images/app_background.jpg) no-repeat;
+  /* background-position: top left; */
+  background-size: cover;
+}
+
+.header-clock {
+  display: block;
+}
+
+.header-date {
+  display: block;
+}
+
+.login-screen {
+  display: grid;
+  grid-template-columns: 1fr auto auto 1fr;
+  grid-template-rows: auto 1fr 1fr 1fr 100px;
+  grid-template-areas:
+  "header header header header"
+  ". . . ."
+  ". login-form login-form ."
+  ". . login-button ."
+  ". . . ."
+  ;
+}
+
+.login-screen .login-form {
+  grid-area: login-form;
+  padding: 80px;
+  margin: 10px;
+  width: 80%;
+  background: rgba(255, 255, 255, 0.5);
+  display: grid;
+  grid-template-columns: 20px 1fr 1fr 20px;
+  grid-template-rows: 20px auto 10px auto 20px;
+  grid-template-areas:
+  ". . . ."
+  ". name-label booking-label ."
+  ". . . ."
+  ". name booking ."
+  ". . . .";
+}
+
+/* .login-form > * {
+  display: inline-block;
+} */
+
+.login-form .name-label{
+  grid-area: name-label;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.login-form .booking-label{
+  grid-area: booking-label;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.login-form .name{
+  grid-area: name;
+  margin-right: 50px;
+  opacity: 0.8;
+  height: 20px;
+
+}
+
+.login-form .booking{
+  grid-area: booking;
+  opacity: 0.8;
+  height: 20px;
+}
+.login-screen .next-button {
+  grid-area: login-button;
+}
+
+.guest-home-screen .header {
+  background-image: url(./assets/images/app_background.jpg);
+  background-position: right;
+}
+
+.dining-screen {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows:  50px 150px 40px 80px 40px 150px 20px ;
+  grid-template-areas:
+  ". . dining-header . ."
+  ". . . . ."
+  ". . room-service . ."
+  ". . or . ."
+  ". . reserve . ."
+  ". . . . ."
+  "dining-footer . . . .";
+}
+.dining-screen-header {
+  grid-area: dining-header;
+  text-transform: uppercase;
+  font-size: 50px;
+}
+
+.dining-screen .room-service {
+  grid-area: room-service;
+  cursor: pointer;
+}
+
+.dining-screen p {
+  grid-area: or;
+}
+
+.dining-screen .reserve-table {
+  grid-area: reserve;
+  cursor: pointer;
+}
+
+.dining-screen .dining-footer {
+  grid-area: dining-footer;
 }

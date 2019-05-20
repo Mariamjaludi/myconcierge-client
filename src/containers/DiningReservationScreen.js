@@ -68,6 +68,14 @@ export default class DiningReservationScreen extends React.Component {
         <hr />
           <input type="submit" value="RESERVE" />
         </form>
+        <button
+          className="next-button"
+          onClick={this.props.handleReturnButtonClick}
+          type="button"
+        >
+        ←
+        </button>
+        <span>MAIN MENU</span>
         <div>footer</div>
       </div>
     );

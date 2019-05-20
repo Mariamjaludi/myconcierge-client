@@ -1,6 +1,9 @@
 import React from "react";
+// import { Switch, Route, withRouter } from 'react-router-dom'
+
 import "./App.css";
 
+import Header from './components/Header'
 import HomeScreen from "./components/HomeScreen";
 import LoginScreen from "./containers/LoginScreen";
 import GuestHomeScreen from "./containers/GuestHomeScreen";
@@ -41,19 +44,52 @@ export default class App extends React.Component {
 
   renderFunction = () => {
     const { homeScreenClick, guest, hotels } = this.state;
-    const { findGuest, handleHomeScreenClick } = this;
+    const { findGuest, handleHomeScreenClick, getHotelName } = this;
     if (!guest) {
       if (!homeScreenClick) {
-        return <HomeScreen handleClick={handleHomeScreenClick} />;
+        return <HomeScreen hotel={hotels[0]} getHotelName={getHotelName} className="home-screen" handleClick={handleHomeScreenClick} />;
       } else {
-        return <LoginScreen findGuest={findGuest} />;
+        return <LoginScreen hotel={hotels[0]} getHotelName={getHotelName} findGuest={findGuest} />;
       }
     } else {
-      return <GuestHomeScreen hotel={hotels[0]} guest={guest} />;
+      return <GuestHomeScreen getHotelName={getHotelName} hotel={hotels[0]} guest={guest} />;
     }
   };
 
+  getHotelName = () => {
+    let hotel = this.state.hotels[0];
+    if (hotel){
+      return hotel.hotel_name
+    }
+    else {
+      return "Hotel Name"
+    }
+  }
+
   render() {
-    return <div className="App">{this.renderFunction()}</div>;
+    return (
+        <div className="App">
+
+          {this.renderFunction()}
+        </div>
+    );
   }
 }
+
+
+
+
+// render() {
+//   return (
+//     <Switch>
+//       <Route path="/home" exact component={HomeScreen} />
+//       <Route path="/login" exact component={LoginScreen} />
+//       <div className="App">
+//         {this.renderFunction()}
+//       </div>
+//   </Switch>
+//   );
+// }
+// }
+//
+// export default withRouter(App)

@@ -1,9 +1,9 @@
 import React from "react";
 import AmenityCard from "../components/AmenityCard";
-
+import Header from '../components/Header.js'
 export default class AmenitiesContainer extends React.Component {
   render() {
-    const { hotel, getClickedAmenity } = this.props;
+    const { hotel, getClickedAmenity, exploreClicked } = this.props;
     return (
       <div className="amenities">
         {hotel.amenities.map(amenity => (
@@ -13,6 +13,7 @@ export default class AmenitiesContainer extends React.Component {
             key={amenity.id}
           />
         ))}
+        <div onClick={exploreClicked} className="explore-card">Explore the City</div>
       </div>
     );
   }
