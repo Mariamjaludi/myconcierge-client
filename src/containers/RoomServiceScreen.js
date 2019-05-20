@@ -16,7 +16,7 @@ export default class RoomServiceScreen extends React.Component {
   };
 
   render() {
-    const { services, guest, createBooking } = this.props;
+    const { services, guest, createBooking, handleReturnButtonClick } = this.props;
     const { collectOrder, handleClick } = this;
     return (
       <div>
@@ -28,8 +28,21 @@ export default class RoomServiceScreen extends React.Component {
           createBooking={createBooking}
           collectOrder={collectOrder}
         />
-        <button type="button" onClick={handleClick}>
-          next
+        <button
+          className="next-button"
+          onClick={handleReturnButtonClick}
+          type="button"
+        >
+        ←
+        </button>
+        <span className="main-menu-label">MAIN MENU</span>
+
+        <span className="order-label"> ORDER</span>
+        <button
+          className="next-button"
+          type="button"
+          onClick={handleClick}>
+          →
         </button>
         <div>footer</div>
       </div>

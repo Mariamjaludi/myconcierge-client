@@ -19,14 +19,14 @@ export default class LoginScreen extends React.Component {
   render(){
     const {handleChange, handleSubmit} = this
     return (
-      <div>
-        <form className='login-form' onSubmit={ handleSubmit }>
+      <div className="login-screen">
+        <form className='login-form'>
           <label htmlFor="guest_name">Guest Name </label>
           <input onChange={ handleChange } type="text" name="guest_name" placeholder="Guest Name"></input>
           <label htmlFor="hotel_booking_id">Hotel Booking Id </label>
           <input onChange={ handleChange } type="text" name="hotel_booking_id" placeholder="Hotel Booking Id"></input>
-          <input className="next-button" type="submit" value="→"></input>
         </form>
+        <button className="next-button" onClick={handleSubmit} type="button">→</button>
       </div>
     )
   }

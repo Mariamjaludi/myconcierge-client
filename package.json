@@ -9,6 +9,7 @@
     "react-datepicker": "^2.5.0",
     "react-dom": "^16.8.6",
     "react-live-clock": "^3.1.0",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "react-time-picker": "^3.5.2"
   },

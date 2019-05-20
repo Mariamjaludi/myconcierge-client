@@ -8,7 +8,7 @@ export default class DiningOrderContainer extends React.Component {
         <div>
           {food[0].service_type.toUpperCase()}
           {food.map(food => (
-            <SummaryMenuItem food={food} editOrder={editOrder}/>
+            <SummaryMenuItem food={food} editOrder={editOrder} key={food.id}/>
           ))}
         </div>
       );
