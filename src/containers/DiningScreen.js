@@ -1,9 +1,9 @@
 import React from "react";
-import DiningScreen2 from "./DiningScreen2";
-import DiningScreen3 from "./DiningScreen3";
-import DiningScreen4 from "./DiningScreen4";
+import DiningReservationScreen from "./DiningReservationScreen";
+import RoomServiceScreen from "./RoomServiceScreen";
+import ConfirmRoomServiceScreen from "./ConfirmRoomServiceScreen";
 
-export default class DiningScreen1 extends React.Component {
+export default class DiningScreen extends React.Component {
   state = {
     diningChoice: null,
     order: [],
@@ -63,7 +63,7 @@ export default class DiningScreen1 extends React.Component {
       return this.renderRoomServiceOrReserveTable();
     } else if (diningChoice === "reserve-table") {
       return (
-        <DiningScreen2
+        <DiningReservationScreen
           services={services}
           guest={guest}
           createBooking={createBooking}
@@ -72,7 +72,7 @@ export default class DiningScreen1 extends React.Component {
     } else if (diningChoice === "room-service") {
       if (!switchToDining4) {
         return (
-          <DiningScreen3
+          <RoomServiceScreen
             services={services}
             guest={guest}
             saveOrder={saveOrder}
@@ -80,7 +80,7 @@ export default class DiningScreen1 extends React.Component {
         );
       } else {
         return (
-          <DiningScreen4
+          <ConfirmRoomServiceScreen
             editOrder={editOrder}
             order={order}
             createBooking={createBooking}

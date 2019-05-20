@@ -1,6 +1,6 @@
 import React from "react";
 import MenuContainer from "./MenuContainer";
-export default class DiningScreen3 extends React.Component {
+export default class RoomServiceScreen extends React.Component {
   state = {
     order: []
   };
