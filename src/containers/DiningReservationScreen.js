@@ -1,6 +1,7 @@
 import React from "react";
 import DatePicker from 'react-datepicker'
 
+
 import "react-datepicker/dist/react-datepicker.css";
 
 export default class DiningReservationScreen extends React.Component {
@@ -25,24 +26,26 @@ export default class DiningReservationScreen extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { services } = this.props;
+    const { services, clearAmenity } = this.props;
     const { booking_date, booking_time, num_of_guests } = this.state;
-    const roomService = services.filter(
-      service => service.service_type === "Room Service"
+    const reserveTable = services.filter(
+      service => service.service_type === "Reserve Table"
     );
     let date = booking_date.toDateString()
     let time = booking_time.toLocaleTimeString().slice(0, -3)
-    this.props.createBooking(roomService[0], date, time, num_of_guests);
-  };
+    this.props.createBooking(reserveTable[0], date, time, num_of_guests);
+
+}
 
   render() {
     const { handleChange, handleDateChange, handleTimeChange, handleSubmit } = this;
     return (
-      <div>
+      <div className="dining-reservation-screen">
+
         <div className="dining-screen-header">DINING</div>
-        <div>RESERVATION INFO</div>
-        <form onSubmit={handleSubmit} className="dining-reservation-form">
-          <label htmlFor="booking_date">Dining Date</label>
+        <div className="reservation-info-label">RESERVATION INFO</div>
+        <form className="reservation-form" onSubmit={handleSubmit}>
+          <label className="booking-date-label" htmlFor="booking_date">Dining Date</label>
           <DatePicker
             selected={this.state.booking_date}
             onChange={handleDateChange}
@@ -68,15 +71,16 @@ export default class DiningReservationScreen extends React.Component {
         <hr />
           <input type="submit" value="RESERVE" />
         </form>
-        <button
-          className="next-button"
-          onClick={this.props.handleReturnButtonClick}
-          type="button"
-        >
-        ←
-        </button>
-        <span>MAIN MENU</span>
-        <div>footer</div>
+        <div className="reservation-footer">
+          <button
+            className="next-button"
+            onClick={this.props.handleReturnButtonClick}
+            type="button"
+          >
+          ←
+          </button>
+          <span>MAIN MENU</span>
+        </div>
       </div>
     );
   }

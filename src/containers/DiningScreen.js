@@ -71,6 +71,7 @@ export default class DiningScreen extends React.Component {
           guest={guest}
           createBooking={createBooking}
           handleReturnButtonClick={handleReturnButtonClick}
+          clearAmenity={clearAmenity}
         />
       );
     } else if (diningChoice === "room-service") {

@@ -1,4 +1,3 @@
-
 .App {
   text-align: center;
 }
@@ -28,6 +27,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -43,30 +43,25 @@
   background-color: Transparent;
 }
 
-.amenity-card {
+/* .amenities .amenity-card, .amenity-explore-card {
   font-size: ;
   padding: 10px;
   margin: 10px;
-  width: 20%;
+  min-width: 150px;
+  max-width: 150px;
   height: 200px;
   border: 1px solid #000;
   border-radius: 5px;
   display: inline-block;
   text-align: center;
-}
+} */
 
-.explore-card {
-  font-size: ;
-  padding: 10px;
-  margin: 10px;
-  width: 20%;
-  height: 200px;
-  border: 1px solid #000;
-  border-radius: 5px;
-  display: inline-block;
+/* .amenities {
+  overflow: auto;
+  display: flex;
+  white-space: nowrap;
   text-align: center;
-}
-
+} */
 
 .home-screen {
   /* height: 100vh; */
@@ -74,11 +69,11 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto 1fr 1fr 1fr 100px;
   grid-template-areas:
-  "header header header header"
-  ". . . ."
-  ". content content ."
-  ". . . ."
-  "footer footer footer footer"
+    "header header header header"
+    ". . . ."
+    ". content content ."
+    ". . . ."
+    "footer footer footer footer"
   ;
 }
 
@@ -88,7 +83,7 @@
   grid-template-columns: auto auto 1fr 1fr 1fr auto;
   grid-template-rows: auto;
   grid-template-areas:
-  "logo hotel-name-cs . . . date-time";
+    "logo hotel-name-cs . . . date-time";
 }
 
 .home-screen-content {
@@ -101,9 +96,9 @@
   grid-template-columns: auto 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-  "hotel-name-footer ."
-  "next-button ."
-  "empty empty"
+    "hotel-name-footer ."
+    "next-button ."
+    "empty empty"
 }
 
 .home-screen-footer .empty-space {
@@ -138,8 +133,7 @@
   display: block;
 }
 
-.login-form input, label {
-}
+.login-form input, label {}
 
 .header .hotel-logo {
   grid-area: logo;
@@ -190,11 +184,11 @@
   grid-template-columns: 1fr auto auto 1fr;
   grid-template-rows: auto 1fr 1fr 1fr 100px;
   grid-template-areas:
-  "header header header header"
-  ". . . ."
-  ". login-form login-form ."
-  ". . login-button ."
-  ". . . ."
+    "header header header header"
+    ". . . ."
+    ". login-form login-form ."
+    ". . login-button ."
+    ". . . ."
   ;
 }
 
@@ -208,44 +202,43 @@
   grid-template-columns: 20px 1fr 1fr 20px;
   grid-template-rows: 20px auto 10px auto 20px;
   grid-template-areas:
-  ". . . ."
-  ". name-label booking-label ."
-  ". . . ."
-  ". name booking ."
-  ". . . .";
+    ". . . ."
+    ". name-label booking-label ."
+    ". . . ."
+    ". name booking ."
+    ". . . .";
 }
 
 /* .login-form > * {
   display: inline-block;
 } */
-
-.login-form .name-label{
+.login-form .name-label {
   grid-area: name-label;
   text-align: left;
   text-transform: uppercase;
   font-size: 13px;
 }
 
-.login-form .booking-label{
+.login-form .booking-label {
   grid-area: booking-label;
   text-align: left;
   text-transform: uppercase;
   font-size: 13px;
 }
 
-.login-form .name{
+.login-form .name {
   grid-area: name;
   margin-right: 50px;
   opacity: 0.8;
   height: 20px;
-
 }
 
-.login-form .booking{
+.login-form .booking {
   grid-area: booking;
   opacity: 0.8;
   height: 20px;
 }
+
 .login-screen .next-button {
   grid-area: login-button;
 }
@@ -258,16 +251,17 @@
 .dining-screen {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows:  50px 150px 40px 80px 40px 150px 20px ;
+  grid-template-rows: 50px 150px 40px 80px 40px 150px 20px;
   grid-template-areas:
-  ". . dining-header . ."
-  ". . . . ."
-  ". . room-service . ."
-  ". . or . ."
-  ". . reserve . ."
-  ". . . . ."
-  "dining-footer . . . .";
+    ". . dining-header . ."
+    ". . . . ."
+    ". . room-service . ."
+    ". . or . ."
+    ". . reserve . ."
+    ". . . . ."
+    "dining-footer . . . .";
 }
+
 .dining-screen-header {
   grid-area: dining-header;
   text-transform: uppercase;
@@ -290,4 +284,175 @@
 
 .dining-screen .dining-footer {
   grid-area: dining-footer;
+}
+
+.dining-reservation-screen {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(11, 1fr);
+  grid-template-areas:
+    ". . dining-header . ."
+    "res-info-label res-info-header . . ."
+    ". . . . ."
+    ". res-form res-form res-form ."
+    "res-footer . . . .";
+}
+
+.dining-reservation-screen .reservation-info-label {
+  grid-area: res-info-label;
+}
+
+.dining-reservation-screen .reservation-form {
+  grid-area: res-form;
+}
+
+.dining-reservation-screen .reservation-footer {
+  grid-area: res-footer;
+}
+
+.explore-card-container, .amenities {
+  width: 100%;
+  height: 500px;
+}
+
+.explore-card-container .wrap, .amenities .wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+
+}
+
+.explore-card, .amenity-card, .amenity-explore-card {
+	margin: 10px;
+	width: 300px;
+	height: 490px;
+	text-align: center;
+	border-radius: 3px;
+	-webkit-transition: 200ms ease-in-out;
+	-o-transition: 200ms ease-in-out;
+	transition: 200ms ease-in-out;
+	-webkit-box-shadow: 0 0 15px rgba(0,0,0,0.3);
+	        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.explore-card:hover, .amenity-card:hover, .amenity-explore-card:hover {
+	margin-bottom: -10px;
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.7);
+	        box-shadow: 0 0 5px rgba(0,0,0,0.7);
+}
+
+.explore-card h1, .amenity-card h1, .amenity-explore-card h1 {
+	color: #fff;
+	padding: 30px;
+	margin-top: 100px;
+	text-align: center;
+	font-weight: 100;
+	font-size: 25px;
+	background: rgba(0,0,0,0.8);
+	-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.7);
+	        box-shadow: 0 0 30px rgba(0,0,0,0.8);
+}
+
+.account-screen {
+  display: grid;
+  grid-template-columns: 10px auto auto auto auto auto 10px;
+  grid-template-rows: 80px 100px auto auto;
+  grid-template-areas:
+    ". . . account-header . . ."
+    ". guest-info . . . . ."
+    ". room-booking-label . . room-info . ."
+    ". . booking-tbl booking-tbl booking-tbl . ."
+    ". . . . total-label total-value .";
+}
+
+.top-table-divide {
+  grid-area: top-line;
+}
+
+.bottom-table-divide {
+  grid-area: bottom-line;
+}
+.account-screen .account-header {
+  grid-area: account-header;
+  text-transform: uppercase;
+  font-size: 50px;
+}
+
+.account-screen .guest-info {
+  grid-area: guest-info;
+  text-align: left;
+}
+
+.account-screen .room-booking-label {
+  grid-area: room-booking-label;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.account-screen .room-info {
+  grid-area: room-info;
+}
+
+.account-screen .booking-tbl {
+  grid-area: booking-tbl;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto 1fr 1fr;
+  grid-template-areas:
+  "summary-header . . ."
+  "booking-details booking-details booking-details booking-details";
+}
+
+.account-screen .booking-tbl .amenity-booking-summary .amenity-header {
+  grid-area: summary-header;
+  text-align: left;
+  text-transform: uppercase;
+  padding: 10px;
+}
+
+.account-screen .booking-tbl .amenity-booking-summary .booking-details {
+  grid-area: booking-details;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 15px;
+  grid-template-areas: "service-name service-date-time service-price";
+  padding-left: 15px;
+  padding-bottom: 5px;
+  font-size: 12px;
+}
+
+.account-screen .booking-tbl .amenity-booking-summary .booking-details .service-name {
+  grid-area: service-name;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.account-screen .booking-tbl .amenity-booking-summary .booking-details .service-date-time {
+  grid-area: service-date-time;
+  text-align: center;
+}
+
+.account-screen .booking-tbl .amenity-booking-summary .booking-details .service-price {
+  grid-area: service-price;
+  text-align: right;
+}
+
+.account-screen .total-label {
+  grid-area: total-label;
+}
+
+.account-screen .total-value {
+  grid-area: total-value;
 }
