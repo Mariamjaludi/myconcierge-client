@@ -47,7 +47,7 @@ export default class DiningScreen extends React.Component {
         <div className="dining-footer">
           <button
             className="next-button"
-            onClick={this.handleReturnButtonClick}
+            onClick={this.props.clearAmenity}
             type="button"
           >
           ←
@@ -58,10 +58,14 @@ export default class DiningScreen extends React.Component {
     );
   };
 
+  // handleReturnButtonClick = () => {
+  //   this.props.clearAmenity()
+  // }
+
   renderFunction = () => {
     const { services, guest, createBooking, clearAmenity } = this.props;
     const { diningChoice, switchToDining4, order } = this.state;
-    const { saveOrder, editOrder, handleReturnButtonClick } = this;
+    const { saveOrder, editOrder } = this;
     if (!diningChoice) {
       return this.renderRoomServiceOrReserveTable();
     } else if (diningChoice === "reserve-table") {
@@ -70,7 +74,7 @@ export default class DiningScreen extends React.Component {
           services={services}
           guest={guest}
           createBooking={createBooking}
-          handleReturnButtonClick={handleReturnButtonClick}
+          clearAmenity={clearAmenity}
         />
       );
     } else if (diningChoice === "room-service") {
@@ -80,7 +84,7 @@ export default class DiningScreen extends React.Component {
             services={services}
             guest={guest}
             saveOrder={saveOrder}
-            handleReturnButtonClick={handleReturnButtonClick}
+            clearAmenity={clearAmenity}
           />
         );
       } else {
@@ -95,10 +99,6 @@ export default class DiningScreen extends React.Component {
       }
     }
   };
-
-  handleReturnButtonClick = () => {
-    this.props.clearAmenity()
-  }
 
   render() {
     return <div>{this.renderFunction()}</div>;

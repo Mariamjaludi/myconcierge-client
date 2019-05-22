@@ -1,9 +1,8 @@
 import React from "react";
 // import { Switch, Route, withRouter } from 'react-router-dom'
-
 import "./App.css";
 
-import Header from './components/Header'
+// import Header from './components/Header'
 import HomeScreen from "./components/HomeScreen";
 import LoginScreen from "./containers/LoginScreen";
 import GuestHomeScreen from "./containers/GuestHomeScreen";
@@ -69,27 +68,8 @@ export default class App extends React.Component {
   render() {
     return (
         <div className="App">
-
           {this.renderFunction()}
         </div>
     );
   }
 }
-
-
-
-
-// render() {
-//   return (
-//     <Switch>
-//       <Route path="/home" exact component={HomeScreen} />
-//       <Route path="/login" exact component={LoginScreen} />
-//       <div className="App">
-//         {this.renderFunction()}
-//       </div>
-//   </Switch>
-//   );
-// }
-// }
-//
-// export default withRouter(App)

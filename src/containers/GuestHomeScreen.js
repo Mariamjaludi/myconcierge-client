@@ -2,14 +2,17 @@ import React from "react";
 import AmenitiesContainer from "./AmenitiesContainer";
 import DiningScreen from "./DiningScreen";
 import Header from "../components/Header"
-import Explore from "../components/Explore"
+import Explore from "./Explore"
+import Account from "./Account"
 
 const BOOKING_API = "http://localhost:3000/bookings";
+
 export default class GuestHomeScreen extends React.Component {
   state = {
     amenity: null,
     booking: null,
-    explore: false
+    explore: false,
+    account: false
   };
 
   getClickedAmenity = amenity => {
@@ -39,23 +42,24 @@ export default class GuestHomeScreen extends React.Component {
       })
     })
       .then(resp => resp.json())
-      .then(booking => this.setState({ booking }));
+      .then(bookings => this.setState({ bookings }));
   };
 
   renderFunction = () => {
-    const { getClickedAmenity, createBooking, clearAmenity, exploreClicked } = this;
+    const { getClickedAmenity, createBooking, clearAmenity, exploreClicked, accountClicked } = this;
     const { hotel, guest } = this.props;
-    const { amenity, explore } = this.state;
-    if (!amenity && !explore) {
+    const { amenity, explore, account } = this.state;
+    if (!amenity && !explore && !account) {
       return (
         <AmenitiesContainer
           getClickedAmenity={getClickedAmenity}
           hotel={hotel}
           exploreClicked={exploreClicked}
+          accountClicked={accountClicked}
         />
       );
     } else if (amenity) {
-      if (amenity.amenity_name === "Restaurant") {
+      if (amenity.amenity_name === "Dining") {
         return (
           <DiningScreen
             createBooking={createBooking}
@@ -66,12 +70,18 @@ export default class GuestHomeScreen extends React.Component {
         );
       }
     } else if (explore) {
-      return <Explore />
+      return <Explore  />
+    } else if (account) {
+      return <Account guest={guest} hotel={hotel} />
     }
   };
 
   exploreClicked = () => {
     this.setState({ explore: true})
+  }
+
+  accountClicked = () => {
+    this.setState({ account: true})
   }
 
   render() {
