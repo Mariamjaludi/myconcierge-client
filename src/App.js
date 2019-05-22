@@ -1,5 +1,6 @@
 import React from "react";
-// import { Switch, Route, withRouter } from 'react-router-dom'
+// import ReactDOM from 'react-dom';
+import { Route, Switch, Redirect } from 'react-router-dom'
 import "./App.css";
 
 // import Header from './components/Header'
@@ -42,18 +43,34 @@ export default class App extends React.Component {
   };
 
   renderFunction = () => {
-    const { homeScreenClick, guest, hotels } = this.state;
+    const { guest, hotels } = this.state;
     const { findGuest, handleHomeScreenClick, getHotelName } = this;
-    if (!guest) {
-      if (!homeScreenClick) {
-        return <HomeScreen hotel={hotels[0]} getHotelName={getHotelName} className="home-screen" handleClick={handleHomeScreenClick} />;
-      } else {
-        return <LoginScreen hotel={hotels[0]} getHotelName={getHotelName} findGuest={findGuest} />;
-      }
-    } else {
+    if (guest)
+    {
       return <GuestHomeScreen getHotelName={getHotelName} hotel={hotels[0]} guest={guest} />;
+    } else {
+      return (
+        <React.Fragment>
+          <Switch>
+            <Route exact path='/' render={ routerProps => <HomeScreen {...routerProps} hotel={hotels[0]} getHotelName={getHotelName}  handleClick={handleHomeScreenClick} />} />
+            <Route exact path='/login' exact component={routerProps => <LoginScreen {...routerProps} hotel={hotels[0]} getHotelName={getHotelName} findGuest={findGuest} />} />
+            <Redirect to="/login" />
+          </Switch>
+        </React.Fragment>
+      )
     }
-  };
+  }
+    //
+    // if (!guest) {
+    //   if (!homeScreenClick) {
+    //     return <HomeScreen hotel={hotels[0]} getHotelName={getHotelName}  handleClick={handleHomeScreenClick} />;
+    //   } else {
+    //     return <LoginScreen hotel={hotels[0]} getHotelName={getHotelName} findGuest={findGuest} />;
+    //   }
+    // } else {
+    //   return <GuestHomeScreen getHotelName={getHotelName} hotel={hotels[0]} guest={guest} />;
+    // }
+  // };
 
   getHotelName = () => {
     let hotel = this.state.hotels[0];
@@ -67,9 +84,9 @@ export default class App extends React.Component {
 
   render() {
     return (
-        <div className="App">
-          {this.renderFunction()}
-        </div>
-    );
+      <div className="App">
+        {this.renderFunction()}
+      </div>
+    )
   }
 }
