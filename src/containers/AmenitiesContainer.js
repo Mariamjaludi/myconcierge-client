@@ -2,6 +2,9 @@ import React from "react";
 import AmenityCard from "../components/AmenityCard";
 // import Header from '../components/Header.js'
 export default class AmenitiesContainer extends React.Component {
+
+
+
   render() {
     const { hotel, getClickedAmenity, exploreClicked, accountClicked } = this.props;
     return (
@@ -15,7 +18,7 @@ export default class AmenitiesContainer extends React.Component {
             />
           ))}
           <div onClick={exploreClicked} className="amenity-explore-card"><h1>Explore the City</h1></div>
-          <div onClick={accountClicked} className="amenity-explore-card"><h1>Account</h1></div>
+          <div onClick={accountClicked} className="amenity-account-card"><h1>Account</h1></div>
         </div>
       </div>
     );

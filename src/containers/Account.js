@@ -58,16 +58,9 @@ export default class Account extends React.Component {
   }
 
   render () {
-    const {guest, hotel} = this.props
+    const {guest} = this.props
     const {getRoom, displayBookings} = this
     const room = getRoom()
-    // const starters = getBookings("Starter")
-    // const mains = getBookings("Main")
-    // const desserts = getBookings("Dessert")
-
-    // <div>{displayBookings("Dining")}</div>
-    // <div>{displayBookings("Spa")}</div>
-    // <div>{displayBookings("Salon")}</div>
     return (
       <div className="account-screen">
         <div className="account-header">Account</div>

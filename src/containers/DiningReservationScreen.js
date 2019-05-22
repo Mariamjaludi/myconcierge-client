@@ -34,7 +34,7 @@ export default class DiningReservationScreen extends React.Component {
     let date = booking_date.toDateString()
     let time = booking_time.toLocaleTimeString().slice(0, -3)
     this.props.createBooking(reserveTable[0], date, time, num_of_guests);
-
+    clearAmenity();
 }
 
   render() {
@@ -74,7 +74,7 @@ export default class DiningReservationScreen extends React.Component {
         <div className="reservation-footer">
           <button
             className="next-button"
-            onClick={this.props.handleReturnButtonClick}
+            onClick={this.props.clearAmenity}
             type="button"
           >
           ←

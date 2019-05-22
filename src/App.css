@@ -43,26 +43,6 @@
   background-color: Transparent;
 }
 
-/* .amenities .amenity-card, .amenity-explore-card {
-  font-size: ;
-  padding: 10px;
-  margin: 10px;
-  min-width: 150px;
-  max-width: 150px;
-  height: 200px;
-  border: 1px solid #000;
-  border-radius: 5px;
-  display: inline-block;
-  text-align: center;
-} */
-
-/* .amenities {
-  overflow: auto;
-  display: flex;
-  white-space: nowrap;
-  text-align: center;
-} */
-
 .home-screen {
   /* height: 100vh; */
   display: grid;
@@ -167,7 +147,6 @@
 .home-screen, .login-screen {
   height: 100vh;
   background: url(./assets/images/app_background.jpg) no-repeat;
-  /* background-position: top left; */
   background-size: cover;
 }
 
@@ -209,9 +188,6 @@
     ". . . .";
 }
 
-/* .login-form > * {
-  display: inline-block;
-} */
 .login-form .name-label {
   grid-area: name-label;
   text-align: left;
@@ -334,8 +310,9 @@
 
 }
 
-.explore-card, .amenity-card, .amenity-explore-card {
-	margin: 10px;
+.explore-card, .amenity-card, .amenity-explore-card, .amenity-account-card  {
+  cursor: pointer;
+  margin: 10px;
 	width: 300px;
 	height: 490px;
 	text-align: center;
@@ -347,13 +324,13 @@
 	        box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
 
-.explore-card:hover, .amenity-card:hover, .amenity-explore-card:hover {
+.explore-card:hover, .amenity-card:hover, .amenity-explore-card:hover, .amenity-account-card:hover {
 	margin-bottom: -10px;
 	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.7);
 	        box-shadow: 0 0 5px rgba(0,0,0,0.7);
 }
 
-.explore-card h1, .amenity-card h1, .amenity-explore-card h1 {
+.explore-card h1, .amenity-card h1, .amenity-explore-card h1, .amenity-account-card h1 {
 	color: #fff;
 	padding: 30px;
 	margin-top: 100px;
@@ -455,4 +432,22 @@
 
 .account-screen .total-value {
   grid-area: total-value;
+}
+
+.amenity-account-card {
+  background: url(https://images.pexels.com/photos/164686/pexels-photo-164686.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+}
+
+.amenity-explore-card {
+  background: url(https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80);
+}
+
+.amenity-account-card, .amenity-explore-card {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.menu-item {
+  cursor: pointer;
 }

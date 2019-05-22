@@ -16,7 +16,7 @@ export default class RoomServiceScreen extends React.Component {
   };
 
   render() {
-    const { services, guest, createBooking, handleReturnButtonClick } = this.props;
+    const { services, guest, createBooking, clearAmenity } = this.props;
     const { collectOrder, handleClick } = this;
     return (
       <div>
@@ -30,7 +30,7 @@ export default class RoomServiceScreen extends React.Component {
         />
         <button
           className="next-button"
-          onClick={handleReturnButtonClick}
+          onClick={clearAmenity}
           type="button"
         >
         ←

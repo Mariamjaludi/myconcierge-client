@@ -70,9 +70,9 @@ export default class GuestHomeScreen extends React.Component {
         );
       }
     } else if (explore) {
-      return <Explore />
+      return <Explore  />
     } else if (account) {
-      return <Account guest={guest} hotel={hotel}/>
+      return <Account guest={guest} hotel={hotel} />
     }
   };
 
