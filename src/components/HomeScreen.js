@@ -8,8 +8,13 @@ import Header from './Header';
 
 export default class HomeScreen extends React.Component {
 
+  handleClick = () => {
+    // console.log(this.props.history)
+    this.props.history.push('/login')
+  }
+
   render(){
-    const {handleClick, getHotelName} = this.props
+    const {getHotelName} = this.props
     let hotelName = getHotelName()
     return (
       <div className="home-screen">
@@ -23,7 +28,7 @@ export default class HomeScreen extends React.Component {
             <div className="hotel-name">{hotelName}</div>
             <div className= "concierge-services-label">Concierge Services</div>
           </div>
-          <button className="next-button" onClick={handleClick} type="button">→</button>
+          <button className="next-button" onClick={this.handleClick} type="button">→</button>
     	  </div>
       </div>
     )

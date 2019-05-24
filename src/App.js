@@ -1,75 +1,120 @@
 import React from "react";
-// import { Switch, Route, withRouter } from 'react-router-dom'
+
+import { Route, Switch, withRouter } from "react-router-dom";
+import api from './api'
+
 import "./App.css";
 
-// import Header from './components/Header'
 import HomeScreen from "./components/HomeScreen";
 import LoginScreen from "./containers/LoginScreen";
 import GuestHomeScreen from "./containers/GuestHomeScreen";
 
-const HOTEL_API = "http://localhost:3000/hotels";
-const LOGIN = "http://localhost:3000/login";
-export default class App extends React.Component {
+class App extends React.Component {
   state = {
     hotels: [],
     guest: null,
-    homeScreenClick: false
+    homeScreenClick: false,
+    logged_in: false
   };
 
-  componentDidMount() {
-    fetch(HOTEL_API)
-      .then(resp => resp.json())
+  componentDidMount () {
+    const token = localStorage.getItem("token")
+    if (token) {
+      api.getCurrentGuest(token)
+        .then(guest =>
+          this.setState({logged_in: true, guest: guest.guest}))
+
+    }
+    api.getHotels()
       .then(hotels => this.setState({ hotels }));
   }
 
-  findGuest = (guest_name, hotel_booking_id) => {
-    fetch(LOGIN, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        guest_name: guest_name,
-        hotel_booking_id: hotel_booking_id
+  findGuest = (guest_name, password) => {
+    return api.login(guest_name, password)
+      .then(data => {
+        if (data.error) {
+          alert(data.error)
+        }
+        else {
+          localStorage.setItem('token', data.jwt)
+            this.setState({
+              logged_in: true,
+              guest: data.guest
+            }, () => this.props.history.push('/guest'))
+        }
       })
-    })
-      .then(resp => resp.json())
-      .then(guest => this.setState({ guest }));
   };
+
+  logOut = () => {
+    localStorage.removeItem("token")
+    this.setState({
+      logged_in: false,
+      guest: null
+    }, this.props.history.push('/'))
+  }
 
   handleHomeScreenClick = () => {
     this.setState({ homeScreenClick: true });
   };
 
-  renderFunction = () => {
-    const { homeScreenClick, guest, hotels } = this.state;
-    const { findGuest, handleHomeScreenClick, getHotelName } = this;
-    if (!guest) {
-      if (!homeScreenClick) {
-        return <HomeScreen hotel={hotels[0]} getHotelName={getHotelName} className="home-screen" handleClick={handleHomeScreenClick} />;
-      } else {
-        return <LoginScreen hotel={hotels[0]} getHotelName={getHotelName} findGuest={findGuest} />;
-      }
+  getHotelName = () => {
+    let hotel = this.state.hotels[0];
+    if (hotel) {
+      return hotel.hotel_name;
     } else {
-      return <GuestHomeScreen getHotelName={getHotelName} hotel={hotels[0]} guest={guest} />;
+      return "Hotel Name";
     }
   };
 
-  getHotelName = () => {
-    let hotel = this.state.hotels[0];
-    if (hotel){
-      return hotel.hotel_name
-    }
-    else {
-      return "Hotel Name"
-    }
-  }
-
   render() {
+    const { guest, hotels, logged_in } = this.state;
+    const { findGuest, handleHomeScreenClick, getHotelName, logOut } = this;
+    // debugger
     return (
-        <div className="App">
-          {this.renderFunction()}
-        </div>
+      <div className="App">
+        <Switch>
+          <Route
+            path="/guest"
+            render={routerProps => (
+              <GuestHomeScreen
+                {...routerProps}
+                getHotelName={getHotelName}
+                hotel={hotels[0]}
+                guest={guest}
+                logged_in={logged_in}
+                logOut={logOut}
+              />
+            )}
+          />
+
+          <Route
+            exact
+            path="/"
+            render={routerProps => (
+              <HomeScreen
+                {...routerProps}
+                hotel={hotels[0]}
+                getHotelName={getHotelName}
+                handleClick={handleHomeScreenClick}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/login"
+            component={routerProps => (
+              <LoginScreen
+                {...routerProps}
+                hotel={hotels[0]}
+                getHotelName={getHotelName}
+                findGuest={findGuest}
+              />
+            )}
+          />
+        </Switch>
+      </div>
     );
   }
 }
+
+export default withRouter(App)

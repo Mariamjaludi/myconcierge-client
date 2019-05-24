@@ -1,65 +1,74 @@
 import React from "react";
+import api from "../api";
+
 import AmenitiesContainer from "./AmenitiesContainer";
 import DiningScreen from "./DiningScreen";
-import Header from "../components/Header"
-import Explore from "./Explore"
-import Account from "./Account"
+import Header from "../components/Header";
+import Explore from "./Explore";
+import Account from "./Account";
 
-const BOOKING_API = "http://localhost:3000/bookings";
-
-export default class GuestHomeScreen extends React.Component {
+class GuestHomeScreen extends React.Component {
   state = {
     amenity: null,
     booking: null,
-    explore: false,
-    account: false
+    view: ""
   };
 
   getClickedAmenity = amenity => {
-    this.setState({ amenity });
+    this.setState({ amenity, view: amenity.amenity_name });
   };
 
   clearAmenity = () => {
-    this.setState({amenity: null})
-  }
+    this.setState({ amenity: null });
+  };
 
-  createBooking = (service, booking_date, booking_time, num_of_guests = null) => {
-    const { guest } = this.props
-    let service_id = service.id;
-    let guest_id = guest.id;
-    // debugger
-    fetch(BOOKING_API, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
+  createBooking = (
+    service,
+    booking_date,
+    booking_time,
+    num_of_guests = null
+  ) => {
+    const { guest } = this.props;
+    const service_id = service.id;
+    const guest_id = guest.id;
+
+    api
+      .postBooking(
         service_id,
         guest_id,
         booking_date,
         booking_time,
         num_of_guests
-      })
-    })
-      .then(resp => resp.json())
+      )
       .then(bookings => this.setState({ bookings }));
   };
 
+  exploreOrAccountClicked = (exploreOrAccount) => {
+    // debugger
+    this.setState({ view: exploreOrAccount });
+  };
+
+  accountClicked = () => {
+    this.setState({ view: "Account" });
+  };
+
+  onCardClick = (path, amenity = {}) => {
+    this.setState({ amenity, view: amenity.amenity_name });
+  };
+
   renderFunction = () => {
-    const { getClickedAmenity, createBooking, clearAmenity, exploreClicked, accountClicked } = this;
+    const {
+      getClickedAmenity,
+      createBooking,
+      clearAmenity,
+      exploreOrAccountClicked,
+      onCardClick
+    } = this;
     const { hotel, guest } = this.props;
-    const { amenity, explore, account } = this.state;
-    if (!amenity && !explore && !account) {
-      return (
-        <AmenitiesContainer
-          getClickedAmenity={getClickedAmenity}
-          hotel={hotel}
-          exploreClicked={exploreClicked}
-          accountClicked={accountClicked}
-        />
-      );
-    } else if (amenity) {
-      if (amenity.amenity_name === "Dining") {
+    const { amenity, view } = this.state;
+
+    switch (view) {
+      case "Dining":
         return (
           <DiningScreen
             createBooking={createBooking}
@@ -68,30 +77,37 @@ export default class GuestHomeScreen extends React.Component {
             clearAmenity={clearAmenity}
           />
         );
-      }
-    } else if (explore) {
-      return <Explore  />
-    } else if (account) {
-      return <Account guest={guest} hotel={hotel} />
+      case "Explore":
+        return <Explore />;
+      case "Account":
+        return <Account guest={guest} hotel={hotel} />;
+      default:
+        return (
+          <AmenitiesContainer
+            getClickedAmenity={getClickedAmenity}
+            hotel={hotel}
+            onCardClick={onCardClick}
+            handleAccountorExploreClick={exploreOrAccountClicked}
+          />
+        );
     }
   };
 
-  exploreClicked = () => {
-    this.setState({ explore: true})
-  }
-
-  accountClicked = () => {
-    this.setState({ account: true})
-  }
 
   render() {
-    const {getHotelName} = this.props;
-    let hotelName = getHotelName()
-    return (
-      <div className="guest-home-screen">
-        <Header className="header" hotel={hotelName}/>
-        {this.renderFunction()}
-      </div>
-    )
+
+    const { hotel, getHotelName, logged_in, logOut } = this.props;
+    // debugger
+    if (hotel) {
+      let hotelName = getHotelName();
+      return (
+        <div className="guest-home-screen">
+          <Header className="header" hotel={hotelName} logged_in={logged_in} logOut={logOut} />
+          {this.renderFunction()}
+        </div>
+      );
+    } else return <div />;
   }
 }
+
+export default GuestHomeScreen;
