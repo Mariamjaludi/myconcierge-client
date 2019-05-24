@@ -6,6 +6,10 @@ import DiningScreen from "./DiningScreen";
 import Header from "../components/Header";
 import Explore from "./Explore";
 import Account from "./Account";
+import ChauffeurTaxiScreen from "../components/ChauffeurTaxiScreen"
+import HousekeepingScreen from "../components/HousekeepingScreen"
+import WakeUpCallScreen from "../components/WakeUpCallScreen"
+
 
 class GuestHomeScreen extends React.Component {
   state = {
@@ -77,6 +81,18 @@ class GuestHomeScreen extends React.Component {
             clearAmenity={clearAmenity}
           />
         );
+      case "Housekeeping":
+        return (
+          <HousekeepingScreen />
+        )
+      case "Chauffeur/Taxi":
+        return (
+          <ChauffeurTaxiScreen />
+        )
+      case "Wake Up Call":
+        return (
+          <WakeUpCallScreen />
+        )
       case "Explore":
         return <Explore />;
       case "Account":
