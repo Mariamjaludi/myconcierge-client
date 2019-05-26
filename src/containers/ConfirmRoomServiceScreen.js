@@ -22,13 +22,12 @@ export default class ConfirmRoomServiceScreen extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const { order, createBooking, clearAmenity } = this.props;
+    const { order, createBooking } = this.props;
     const { booking_date, booking_time } = this.state;
     let date = booking_date.toDateString()
     let time = booking_time.toLocaleTimeString().slice(0, -3)
-    // debugger
     order.forEach(o => createBooking(o, date, time));
-    clearAmenity();
+    // clearAmenity();
   };
 
   orderSum = () => {

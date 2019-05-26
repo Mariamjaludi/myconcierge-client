@@ -3,9 +3,16 @@ import api from "../api";
 
 import AmenitiesContainer from "./AmenitiesContainer";
 import DiningScreen from "./DiningScreen";
+import WellnessAndSalonScreen from './WellnessAndSalonScreen'
+// import WellnessScreen from './WellnessScreen'
+// import SalonScreen from './SalonScreen'
 import Header from "../components/Header";
 import Explore from "./Explore";
 import Account from "./Account";
+import ChauffeurTaxiScreen from "../components/ChauffeurTaxiScreen"
+import HousekeepingScreen from "../components/HousekeepingScreen"
+import WakeUpCallScreen from "../components/WakeUpCallScreen"
+
 
 class GuestHomeScreen extends React.Component {
   state = {
@@ -19,7 +26,8 @@ class GuestHomeScreen extends React.Component {
   };
 
   clearAmenity = () => {
-    this.setState({ amenity: null });
+
+    this.setState({ amenity: null, view: "" });
   };
 
   createBooking = (
@@ -77,10 +85,55 @@ class GuestHomeScreen extends React.Component {
             clearAmenity={clearAmenity}
           />
         );
+      case "Housekeeping":
+        return (
+          <HousekeepingScreen
+            createBooking={createBooking}
+            services={amenity.services}
+            clearAmenity={clearAmenity}
+          />
+        )
+      case "Chauffeur/Taxi":
+        return (
+          <ChauffeurTaxiScreen
+            createBooking={createBooking}
+            services={amenity.services}
+            clearAmenity={clearAmenity}
+          />
+        )
+      case "Wellness":
+      case "Salon":
+        return (
+          <WellnessAndSalonScreen
+            createBooking={createBooking}
+            guest={guest}
+            amenityName={amenity.amenity_name}
+            services={amenity.services}
+            clearAmenity={clearAmenity}
+          />
+        );
+      case "Wake Up Call":
+        return (
+          <WakeUpCallScreen
+            createBooking={createBooking}
+            services={amenity.services}
+            clearAmenity={clearAmenity}
+          />
+        )
       case "Explore":
-        return <Explore />;
+        return (
+          <Explore
+            clearAmenity={clearAmenity}
+          />
+        );
       case "Account":
-        return <Account guest={guest} hotel={hotel} />;
+        return (
+          <Account
+            guest={guest}
+            hotel={hotel}
+            clearAmenity={clearAmenity}
+          />
+        );
       default:
         return (
           <AmenitiesContainer

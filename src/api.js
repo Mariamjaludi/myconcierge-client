@@ -49,10 +49,16 @@ const postBooking = (
   }).then(res => res.json());
 };
 
+const getAttractions = () => {
+  return fetch(`${API_BASE_URL}/attractions`)
+    .then(resp => resp.json())
+}
+
 export default {
   login,
   getCurrentGuest,
   getHotels,
   getBookings,
-  postBooking
+  postBooking,
+  getAttractions
 };

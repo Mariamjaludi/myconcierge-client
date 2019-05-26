@@ -1,6 +1,7 @@
 import React from 'react'
+import api from '../api'
 import ExploreCard from '../components/ExploreCard'
-const ATTRACTIONS_API = 'http://localhost:3000/attractions'
+
 export default class Explore extends React.Component {
 
   state = {
@@ -8,17 +9,29 @@ export default class Explore extends React.Component {
   }
 
   componentDidMount () {
-    fetch(ATTRACTIONS_API)
-      .then(resp => resp.json())
+    api.getAttractions()
       .then(attractions => this.setState({ attractions }));
   }
 
   render () {
     const { attractions } = this.state
     return (
-      <div className="explore-card-container">
-        <div className="wrap">
-          {attractions.map(attraction => <ExploreCard attraction={attraction} key={attraction.id}/>)}
+      <div className="explore-screen">
+        <div className="explore-header">Explore</div>
+        <div className="explore-card-container">
+          <div className="wrap">
+            {attractions.map(attraction => <ExploreCard attraction={attraction} key={attraction.id}/>)}
+          </div>
+        </div>
+        <div className="explore-footer">
+          <button
+            className="next-button"
+            onClick={this.props.clearAmenity}
+            type="button"
+          >
+            ←
+          </button>
+          <span>MAIN MENU</span>
         </div>
       </div>
     )
