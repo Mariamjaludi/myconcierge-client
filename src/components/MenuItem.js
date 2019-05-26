@@ -3,16 +3,17 @@ import React from 'react'
 export default class MenuItem extends React.Component{
 
   handleClick = () => {
-    const {food, collectOrder} = this.props
-    collectOrder(food)
+    const {item, collectOrder} = this.props
+    collectOrder(item)
   }
   render(){
-    const {food} = this.props
+    // debugger
+    const {item} = this.props
     return (
       <div className="menu-item" onClick={this.handleClick}>
-          <p className="food-name"><strong>{food.service_name}</strong></p>
-          <div className="description">{food.description}</div>
-          <div className="price">{food.price}</div>
+          <p className="item-name"><strong>{item.service_name}</strong></p>
+          <div className="description">{item.description}</div>
+          <div className="price">{item.price}</div>
       </div>
     )
   }

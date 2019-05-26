@@ -56,7 +56,7 @@ export default class Account extends React.Component {
   }
 
   render () {
-    const {guest, hotel} = this.props
+    const {guest, hotel, clearAmenity} = this.props
     const {getRoom, displayBookings} = this
     // debugger
     if (guest && hotel )
@@ -83,6 +83,16 @@ export default class Account extends React.Component {
           </div>
           <div className="total-label">Total</div>
           <div className="total-value">{this.getTotal()}</div>
+          <div className="account-footer">
+            <button
+              className="next-button"
+              onClick={clearAmenity}
+              type="button"
+            >
+              ←
+            </button>
+            <span>MAIN MENU</span>
+          </div>
         </div>
       )
     } else return <div />

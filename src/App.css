@@ -221,7 +221,7 @@
 
 .guest-home-screen .header {
   background-image: url(./assets/images/app_background.jpg);
-  background-position: right;
+  /* background-position: right; */
 }
 
 .dining-screen {

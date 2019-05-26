@@ -6,7 +6,7 @@ export default class MenuContainer extends React.Component {
     return (
       <div>
         {food.map(food => (
-          <MenuItem food={food} collectOrder={collectOrder} key={food.id}/>
+          <MenuItem item={food} collectOrder={collectOrder} key={food.id}/>
         ))}
       </div>
     );
