@@ -33,6 +33,11 @@
   }
 }
 
+/* body {
+  background-color: black;
+  color: white
+} */
+
 .next-button {
   width: 40px;
   height: 40px;
@@ -64,6 +69,7 @@
   grid-template-rows: auto;
   grid-template-areas:
     "logo hotel-name-cs . . . date-time";
+
 }
 
 .home-screen-content {
@@ -222,8 +228,18 @@
 .guest-home-screen .header {
   background-image: url(./assets/images/app_background.jpg);
   /* background-position: right; */
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto; */
+  /* z-index: 1; */
 }
 
+.amenities, .explore-screen {
+  margin-top: 70px;
+  /* z-index: 2; */
+}
 .dining-screen {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -285,6 +301,8 @@
 .dining-reservation-screen .reservation-footer {
   grid-area: res-footer;
 }
+
+
 
 .explore-card-container, .amenities {
   width: 100%;
