@@ -1,18 +1,15 @@
 import React from "react";
 import api from "../api";
 
+import Header from "../components/Header";
 import AmenitiesContainer from "./AmenitiesContainer";
 import DiningScreen from "./DiningScreen";
 import WellnessAndSalonScreen from './WellnessAndSalonScreen'
-// import WellnessScreen from './WellnessScreen'
-// import SalonScreen from './SalonScreen'
-import Header from "../components/Header";
-import Explore from "./Explore";
-import Account from "./Account";
 import ChauffeurTaxiScreen from "../components/ChauffeurTaxiScreen"
 import HousekeepingScreen from "../components/HousekeepingScreen"
 import WakeUpCallScreen from "../components/WakeUpCallScreen"
-
+import Explore from "./Explore";
+import Account from "./Account";
 
 class GuestHomeScreen extends React.Component {
   state = {
