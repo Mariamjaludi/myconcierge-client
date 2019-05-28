@@ -1,6 +1,4 @@
 import React from 'react';
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
 import SummaryWSItem from "../components/SummaryWSItem";
 
 export default class ConfirmWSOrderScreen extends React.Component {
@@ -13,11 +11,11 @@ export default class ConfirmWSOrderScreen extends React.Component {
   };
 
   renderMenuItems = items => {
+    // debugger
     const {editOrder} = this.props
     if (items.length > 0) {
       return (
-        <div>
-          {items[0].service_type.toUpperCase()}
+        <div className="summary-items">
           {items.map(item => (
             <SummaryWSItem item={item} editOrder={editOrder} createBooking={this.props.createBooking} key={item.id}/>
           ))}
@@ -26,28 +24,28 @@ export default class ConfirmWSOrderScreen extends React.Component {
     }
   };
 
-
+// {items[0].service_type.toUpperCase()}
   render () {
     const { order, clearAmenity, categorizeServices } = this.props
     const { renderMenuItems, orderSum } = this;
+    // debugger
     return (
-      <div>
-      <div>Your Order</div>
-      <form>
-        {categorizeServices(order).forEach(serviceTypeGroup => renderMenuItems(serviceTypeGroup))}
-        <hr />
-        <div>Total: {orderSum()}</div>
+      <div className="confirm-ws-screen">
+      <div className="your-order-div">Your Order</div>
+      <form className="confirm-ws-form">
+        {categorizeServices(order).map(serviceTypeGroup => renderMenuItems(serviceTypeGroup))}
       </form>
-        <button
-          className="next-button"
-          onClick={clearAmenity}
-          type="button"
-        >
-        ←
-        </button>
-        <span className="main-menu-label">MAIN MENU</span>
+      <div className="total">Total: £{orderSum()}</div>
       </div>
     )
   }
 
 }
+
+// <button
+//   className="next-button"
+//   onClick={clearAmenity}
+//   type="button"
+// >
+// ←
+// </button>

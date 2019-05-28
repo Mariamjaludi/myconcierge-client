@@ -61,6 +61,7 @@ class GuestHomeScreen extends React.Component {
   };
 
   onLinkClick = (amenity = {}) => {
+    document.querySelector('.guest-home-screen').classList.add('hide');
     this.setState({ amenity, view: amenity.amenity_name });
   };
 

@@ -260,6 +260,7 @@
 
 .guest-home-screen .amenity-page {
   grid-area: amenity-page;
+  overflow-y: scroll;
 }
 
 .guest-home-screen .navbar {
@@ -278,6 +279,10 @@
   "logout"
   "."
   "myconcierge"
+}
+
+.guest-home-screen.hide {
+  background: url('');
 }
 
 .navbar .logo {
@@ -552,22 +557,20 @@
 
 .dining-room-service .btn-div{
   grid-area: rs-order-btn;
-  padding-right: 10px;
+  text-align: right;
+  padding-right: 5%;
 }
-.dining-room-service .rs-order-btn {
-  box-shadow: none;
-  width: 70px;
-  height: 40px;
-  border-radius: 5px;
-  border: 1px solid #000;
-  text-align: center;
-  background-color: Transparent;
-  font-size: 10px;
-  font-weight: 400;
+
+.rs-order-btn {
+  width: 6rem;
+  height: 2rem;
   letter-spacing: .125rem;
   text-transform: uppercase;
+  font-weight: 400;
   transition: 0.5s;
+  cursor: pointer;
 }
+
 
 .dining-room-service .rs-order-btn:hover {
   background-color: #F5F5F5;
@@ -587,7 +590,7 @@
   padding-left: 15px;
   padding-right: 15px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-auto-rows: auto;
   grid-template-areas:
   "menu-item "
@@ -603,7 +606,7 @@
   font-family: 'din-2014', 'source-han-sans-simplified-c', sans-serif;
   font-weight: 400;
   letter-spacing: .125rem;
-  transition: 0.5s;
+  transition: 0.3s;
   cursor: default;
 }
 
@@ -765,6 +768,7 @@
 
 .dining-orders .menu-item .remove:hover{
   color: #B8B8B7;
+  text-decoration: underline;
   font-weight: 400
 
 }
@@ -1136,8 +1140,25 @@
   padding: 10px;
 }
 
-.ws-menu-container .order-btn{
+.ws-menu-container .btn-div{
   grid-area: order-btn;
+  text-align: right;
+  padding-right: 5%;
+
+}
+
+.ws-order-btn {
+  width: 6rem;
+  height: 2rem;
+  letter-spacing: .125rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.ws-order-btn:hover {
+  background-color: #F5F5F5;
 }
 
 .ws-menu-container .ws-menu .menu-item .item-name {
@@ -1155,6 +1176,12 @@
 }
 
 .ws-menu-container .ws-menu .menu-item .item-name:hover {
+  color: #606060;
+  padding-left: 2.5px;
+  /* font-size: 1.05rem; */
+}
+
+.ws-menu-container .ws-menu .menu-item .item-name:active {
   color: #606060;
   padding-left: 2.5px;
   /* font-size: 1.05rem; */
@@ -1180,7 +1207,132 @@
   color: #4F4F4D;
   padding-right: 10px;
 }
+/*                  confirm ws screen                    */
 
+.confirm-ws-screen {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "your-order-div"
+  "confirm-ws-form"
+  "total";
+}
+.confirm-ws-screen .confirm-ws-form {
+  grid-area: confirm-ws-form
+
+}
+/* .confirm-ws-form .summary-items {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "menu-item"
+} */
+
+.confirm-ws-form .summary-items  .menu-item{
+  /* grid-area: menu-item; */
+  display: grid;
+  border-bottom: solid 1px #E4E4E3;
+  grid-template-columns: 1fr 0.5fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+  "treatment-name price remove"
+  "date-time date-time book";
+  margin: 1rem;
+  padding: 0.5rem;
+}
+.summary-items .menu-item .treatment-name {
+  grid-area: treatment-name;
+  text-align: left;
+  font-size: 0.9rem;
+  font-family: 'din-2014', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 300;
+  letter-spacing: .1rem;
+  transition: 0.5s;
+  cursor: default;
+  margin-left: 5%;
+}
+.summary-items .menu-item .price {
+  grid-area: price;
+  text-align: left;
+  font-size: 0.9rem;
+  font-family: 'din-2014', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 300;
+}
+.summary-items .menu-item .date-time{
+  grid-area: date-time;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+  "date-lbl time-lbl"
+  "date time"
+}
+.summary-items .menu-item .book {
+  grid-area: book;
+  letter-spacing: .1rem;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  font-weight: lighter;
+  font-family: 'din-2014', 'source-han-sans-simplified-c', sans-serif;
+}
+.summary-items .menu-item .remove {
+  grid-area: remove;
+  letter-spacing: .1rem;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  font-weight: lighter;
+  font-family: 'din-2014', 'source-han-sans-simplified-c', sans-serif;
+}
+
+.summary-items .menu-item .remove:hover, .summary-items .menu-item .book:hover {
+  text-decoration: underline;
+  color: #B8B8B7;
+  cursor: pointer;
+}
+.summary-items .menu-item .date-time .time-lbl {
+  grid-area: time-lbl;
+  font-size: 0.75rem;
+  font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 400;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-align: left;
+}
+.summary-items .menu-item .date-time .date-lbl {
+  grid-area: date-lbl;
+  font-size: 0.75rem;
+  font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 400;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-align: left;
+}
+.summary-items .menu-item .date-time .date {
+  grid-area: date;
+  border: none;
+  border-bottom: solid 1px #E4E4E3;
+  color: #4F4F4D;
+}
+.summary-items .menu-item .date-time .time {
+  grid-area: time;
+  border: none;
+  border-bottom: solid 1px #E4E4E3;
+  color: #4F4F4D;
+}
+
+.confirm-ws-screen .your-order-div {
+  grid-area: your-order-div
+}
+.confirm-ws-screen .total {
+  grid-area: total;
+  text-align: right;
+  font-size: 0.9rem;
+  font-family: 'din-2014', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 300;
+}
 /*               explore                     */
 .explore-card-container, .amenities {
   width: 100%;

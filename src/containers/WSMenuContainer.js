@@ -21,22 +21,29 @@ export default class WSMenuContainer extends React.Component {
     const { handleClick, clearAmenity, services, categorizeServices } = this.props;
     const { renderMenuItems } = this;
     const catServices = categorizeServices(services)
-    // debugger
     return (
       <div className="ws-menu-container">
         <div className="select-order-lbl">Select your order</div>
         <div className="ws-menu">
           {catServices.map(cs => renderMenuItems(cs))}
         </div>
-        <div className="order-btn">
+        <div className="btn-div">
           <button
-            className="next-button"
+            className="ws-order-btn"
             type="button"
             onClick={handleClick}>
-            →
+            Order
           </button>
-      </div>
+        </div>
       </div>
     );
   }
 }
+
+// <div className="order-btn">
+//   <button
+//     className="next-button"
+//     type="button"
+//     onClick={handleClick}>
+//     →
+//   </button>
