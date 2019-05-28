@@ -19,32 +19,23 @@ export default class RoomServiceScreen extends React.Component {
     const { services, guest, createBooking, clearAmenity } = this.props;
     const { collectOrder, handleClick } = this;
     return (
-      <div>
-        <div>header</div>
-        <div>Select your order</div>
+      <div className="dining-room-service">
+        <div className="room-service-header">Room Service Menu</div>
+        <div className="select-order-label">Select your order</div>
         <MenuContainer
           services={services}
           guest={guest}
           createBooking={createBooking}
           collectOrder={collectOrder}
         />
-        <button
-          className="next-button"
-          onClick={clearAmenity}
-          type="button"
-        >
-        ←
-        </button>
-        <span className="main-menu-label">MAIN MENU</span>
-
-        <span className="order-label"> ORDER</span>
-        <button
-          className="next-button"
-          type="button"
-          onClick={handleClick}>
-          →
-        </button>
-        <div>footer</div>
+        <div className="btn-div">
+          <button
+            className="rs-order-btn"
+            type="button"
+            onClick={handleClick}>
+            Order
+          </button>
+        </div>
       </div>
     );
   }

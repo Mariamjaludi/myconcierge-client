@@ -13,7 +13,7 @@ export default class Header extends React.Component {
       <div className="header-time-date">
         <DigitalClock className="header-date" format={'dddd, MMM D '} ticking={true} timezone={'GB'} />
         <DigitalClock className="header-clock" format={'HH:mm'} ticking={true} timezone={'GB'} />
-        {(this.props.logged_in) ? <button className="logout" onClick={this.props.logOut} type="button">Log Out</button> : null }
+        {(this.props.loggedIn) ? <button className="logout" onClick={this.props.logOut} type="button">Log Out</button> : null }
       </div>
       </div>
     )

@@ -30,6 +30,7 @@ export default class Account extends React.Component {
   }
 
   displayBookings = (amenityName) => {
+    // debugger;
     const {bookings} = this.state
     const {hotel} = this.props
     const amenity = hotel.amenities.find(amenity => amenity.amenity_name === amenityName)
@@ -78,7 +79,7 @@ export default class Account extends React.Component {
           </div>
           <div className="booking-tbl">
           {displayBookings("Dining")}
-          {displayBookings("Spa")}
+          {displayBookings("Wellness")}
           {displayBookings("Salon")}
           </div>
           <div className="total-label">Total</div>

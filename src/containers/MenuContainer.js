@@ -4,7 +4,7 @@ export default class MenuContainer extends React.Component {
   renderMenuItems = food => {
     const { collectOrder } = this.props;
     return (
-      <div>
+      <div className="menu-items">
         {food.map(food => (
           <MenuItem item={food} collectOrder={collectOrder} key={food.id}/>
         ))}
@@ -19,12 +19,12 @@ export default class MenuContainer extends React.Component {
     const mains = services.filter(service => service.service_type === "Main");
     const desserts = services.filter(service => service.service_type === "Dessert");
     return (
-      <div>
-        <div>STARTERS</div>
+      <div className="dining-menu">
+        <div className="starter-label">Starters</div>
         {renderMenuItems(starters)}
-        <div>MAIN</div>
+        <div className="main-label">Main</div>
         {renderMenuItems(mains)}
-        <div>DESSERT</div>
+        <div className="dessert-label">Dessert</div>
         {renderMenuItems(desserts)}
       </div>
     );

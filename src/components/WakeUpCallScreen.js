@@ -35,17 +35,19 @@ export default class WakeUpCallScreen extends React.Component {
     const { handleDateChange, handleTimeChange, handleSubmit } = this;
     return (
       <div className="wakeup-call-screen">
-        <div className="wakeup-call-screen-header">Wake Up Call</div>
+        <div className="wakeup-call-header">Wake Up Call</div>
         <form className="wakeup-call-form" onSubmit={handleSubmit}>
           <label className="booking-date-label" htmlFor="booking_date">
             Date
           </label>
           <DatePicker
+            className="date-picker"
             selected={booking_date}
             onChange={handleDateChange}
           />
           <label htmlFor="booking_time">Pick Up Time</label>
           <DatePicker
+            className="time-picker"
             selected={booking_time}
             onChange={handleTimeChange}
             showTimeSelect

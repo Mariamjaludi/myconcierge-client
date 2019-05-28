@@ -45,47 +45,36 @@ export default class DiningReservationScreen extends React.Component {
     } = this;
     return (
       <div className="dining-reservation-screen">
-        <div className="dining-screen-header">DINING</div>
-        <div className="reservation-info-label">RESERVATION INFO</div>
+        <div className="reservation-info-label">Reservation Information</div>
         <form className="reservation-form" onSubmit={handleSubmit}>
           <label className="booking-date-label" htmlFor="booking_date">
             Dining Date
           </label>
           <DatePicker
+            className="date-picker"
             selected={this.state.booking_date}
             onChange={handleDateChange}
-            placeholderText="Click to select a date"
           />
-          <label htmlFor="booking_time">Dining Time</label>
+        <label className="booking-time-label" htmlFor="booking_time">Dining Time</label>
           <DatePicker
+            className="time-picker"
             selected={this.state.booking_time}
             onChange={handleTimeChange}
             showTimeSelect
             showTimeSelectOnly
             timeIntervals={30}
             dateFormat="h:mm aa"
-            placeholderText="Click to select your dining time"
           />
-          <label htmlFor="num_of_guests">No. of Guests</label>
+        <label className="no-of-guests-label" htmlFor="num_of_guests">No. of Guests</label>
           <input
+            className="no-of-guests-input"
             onChange={handleChange}
             type="text"
             name="num_of_guests"
             placeholder="No. of Guests"
           />
-          <hr />
-          <input type="submit" value="RESERVE" />
+          <input className="submit-btn" type="submit" value="Reserve" />
         </form>
-        <div className="reservation-footer">
-          <button
-            className="next-button"
-            onClick={this.props.clearAmenity}
-            type="button"
-          >
-            ←
-          </button>
-          <span>MAIN MENU</span>
-        </div>
       </div>
     );
   }

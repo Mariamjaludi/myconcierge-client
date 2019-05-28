@@ -6,7 +6,6 @@ export default class DiningOrderContainer extends React.Component {
     if (food.length > 0) {
       return (
         <div>
-          {food[0].service_type.toUpperCase()}
           {food.map(food => (
             <SummaryMenuItem food={food} editOrder={editOrder} key={food.id}/>
           ))}
@@ -16,17 +15,19 @@ export default class DiningOrderContainer extends React.Component {
   };
 
   render() {
-    const { order } = this.props;
-    const { renderMenuItems } = this;
-    const starters = order.filter(o => o.service_type === "Starter");
-    const mains = order.filter(o => o.service_type === "Main");
-    const desserts = order.filter(o => o.service_type === "Dessert");
-    return (
-      <div>
-        {renderMenuItems(starters)}
-        {renderMenuItems(mains)}
-        {renderMenuItems(desserts)}
-      </div>
-    );
+    const { order, editOrder } = this.props;
+    // const { renderMenuItems } = this; 
+    // const starters = order.filter(o => o.service_type === "Starter");
+    // const mains = order.filter(o => o.service_type === "Main");
+    // const desserts = order.filter(o => o.service_type === "Dessert");
+    if (order.length > 0) {
+      return (
+        <div className="dining-orders">
+          {order.map(o => (
+            <SummaryMenuItem food={o} editOrder={editOrder} key={o.id}/>
+          ))}
+        </div>
+      );
+    }
   }
 }

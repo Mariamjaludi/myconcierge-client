@@ -48,8 +48,9 @@ export default class HousekeepingScreen extends React.Component {
       <div className="housekeeping-screen">
         <div className="housekeeping-header">Housekeeping</div>
         <form className="housekeeping-form" onSubmit={handleSubmit}>
-          <label htmlFor="booking_time">Requested Housekeeping time</label>
+          <label className="requested-time-lbl" htmlFor="booking_time">Requested Housekeeping time</label>
           <DatePicker
+            className="time-picker"
             selected={booking_time}
             onChange={handleTimeChange}
             showTimeSelect
@@ -57,46 +58,48 @@ export default class HousekeepingScreen extends React.Component {
             timeIntervals={30}
             dateFormat="h:mm aa"
           />
-          <hr />
-          <div className="transportation-radiogroup">
-            <label htmlFor="Change Towels">Change Towels</label>
+          <div className="services-lbl">Services</div>
+          <div className="radiogroup">
+            <label className="towels-lbl" htmlFor="Change Towels">Change Towels</label>
             <input
-              className="radio-option"
+              className="towels"
               type="radio"
               value="Change Towels"
               checked={housekeepingType === "Change Towels"}
               onChange={handleChange}
             />
-            <label htmlFor="Clean Room">Clean Room</label>
+          <label className="clean-lbl" htmlFor="Clean Room">Clean Room</label>
             <input
-              className="radio-option"
+              className="clean"
               type="radio"
               value="Clean Room"
               checked={housekeepingType === "Clean Room"}
               onChange={handleChange}
             />
-            <label htmlFor="Laundry Service">Laundry Service</label>
+          <label className="laundry-lbl" htmlFor="Laundry Service">Laundry Service</label>
             <input
-              className="radio-option"
+              className="laundry"
               type="radio"
               value="Laundry Service"
               checked={housekeepingType === "Laundry Service"}
               onChange={handleChange}
             />
           </div>
-          <input type="submit" value="CONFIRM" />
+          <div className="submit-btn">
+            <input type="submit" value="CONFIRM" />
+          </div>  
         </form>
-        <div className="housekeeping-footer">
-          <button
-            className="next-button"
-            onClick={this.props.clearAmenity}
-            type="button"
-          >
-            ←
-          </button>
-          <span>MAIN MENU</span>
-        </div>
       </div>
     );
   }
 }
+// <div className="housekeeping-footer">
+//   <button
+//     className="next-button"
+//     onClick={this.props.clearAmenity}
+//     type="button"
+//   >
+//     ←
+//   </button>
+//   <span>MAIN MENU</span>
+// </div>

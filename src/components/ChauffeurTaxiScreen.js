@@ -53,59 +53,62 @@ export default class ChauffeurTaxiScreen extends React.Component {
         <form className="taxi-form" onSubmit={handleSubmit}>
           <div className="transportation-type-header">Transportation type</div>
           <div className="transportation-radiogroup">
-            <label htmlFor="Luxury vehicle with private chauffeur">Luxury vehicle with private chauffeur</label>
+            <label className="lux-lbl" htmlFor="Luxury vehicle with private chauffeur">Luxury vehicle with private chauffeur</label>
             <input
-              className="radio-option"
+              className="lux-radio"
               type="radio"
               value="Luxury vehicle with private chauffeur"
               checked={transportType === "Luxury vehicle with private chauffeur"}
               onChange={handleChange}
             />
-            <label htmlFor="Airport Shuttle">Airport Shuttle</label>
+          <label className="shuttle-lbl" htmlFor="Airport Shuttle">Airport Shuttle</label>
             <input
-              className="radio-option"
+              className="shuttle-radio"
               type="radio"
               value="Airport Shuttle"
               checked={transportType === "Airport Shuttle"}
               onChange={handleChange}
             />
-            <label htmlFor="Taxi">Taxi</label>
+          <label className="taxi-lbl" htmlFor="Taxi">Taxi</label>
             <input
-              className="radio-option"
+              className="taxi-radio"
               type="radio"
               value="Taxi"
               checked={transportType === "Taxi"}
               onChange={handleChange}
             />
           </div>
-          <hr />
-          <label className="booking-date-label" htmlFor="booking_date">
-            Date
-          </label>
-          <DatePicker selected={booking_date} onChange={handleDateChange} />
-          <label htmlFor="booking_time">Pick Up Time</label>
-          <DatePicker
-            selected={booking_time}
-            onChange={handleTimeChange}
-            showTimeSelect
-            showTimeSelectOnly
-            timeIntervals={30}
-            dateFormat="h:mm aa"
-          />
-          <hr />
-          <input type="submit" value="RESERVE" />
-        </form>
-        <div className="taxi-footer">
-          <button
-            className="next-button"
-            onClick={this.props.clearAmenity}
-            type="button"
-          >
-            ←
-          </button>
-          <span>MAIN MENU</span>
+          <div className="date-time">
+            <label className="booking-date-label" htmlFor="booking_date">
+              Date
+            </label>
+            <DatePicker className="date-picker" selected={booking_date} onChange={handleDateChange} />
+            <label className="booking-time-label" htmlFor="booking_time">Pick Up Time</label>
+            <DatePicker
+              className="time-picker"
+              selected={booking_time}
+              onChange={handleTimeChange}
+              showTimeSelect
+              showTimeSelectOnly
+              timeIntervals={30}
+              dateFormat="h:mm aa"
+            />
         </div>
+        <div className="submit-btn">
+          <input type="submit" value="RESERVE" />
+        </div>
+        </form>
       </div>
     );
   }
 }
+// <div className="taxi-footer">
+//   <button
+//     className="next-button"
+//     onClick={this.props.clearAmenity}
+//     type="button"
+//   >
+//     ←
+//   </button>
+//   <span>MAIN MENU</span>
+// </div>

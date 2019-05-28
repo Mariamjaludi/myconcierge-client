@@ -8,7 +8,7 @@ export default class AmenitiesCard extends React.Component {
   render() {
     const { amenity } = this.props;
     let divStyle = {
-      background: `url(${amenity.image})`,
+      backgroundImage: `url(${amenity.image}) no-repeat`,
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
       backgroundPosition: "center"

@@ -1,24 +1,22 @@
-import React from 'react'
-import AmenityLink from './AmenityLink'
+import React from "react";
+import NavLink from "./NavLink";
 export default class NavBar extends React.Component {
-
-
-  render () {
-    const {handleClick, hotel} = this.props
+  render() {
+    const { onLinkClick, exploreOrAccountClicked, hotel } = this.props;
     return (
       <div className="navbar">
-        <div onClick={handleClick}>Hotel Logo</div>
-        {hotel.amenities.map(a => <AmenityLink amenity={a}/>)}
-        <div>Hotel name</div>
-        <div>Dining</div>
-        <div>Housekeeping</div>
-        <div>Chauffeur/Taxi</div>
-        <div>Wellness</div>
-        <div>Salon</div>
-        <div>Wake Up Call</div>
-        <div>Explore the City</div>
-        <div>Account</div>
-      </div>
-    )
+        <div className="logo"></div>
+        <div className="hotel-name">{hotel.hotel_name}</div>
+        <div className="amenity-links">
+          {hotel.amenities.map(a => (
+            <NavLink onLinkClick={() => onLinkClick(a)} amenity={a} />
+          ))}
+          <div id="Explore" className="amenity-link" onClick={() => exploreOrAccountClicked("Explore")}>Explore the City</div>
+          <div id="Account" className="amenity-link" onClick={() => exploreOrAccountClicked("Account")}>Account</div>
+        </div>
+        <div className="logout" onClick={this.props.logOut}>Log Out</div>
+        <div className="myConcierge-footer">Powered by MyConcierge</div>
+    </div>
+    );
   }
 }

@@ -44,9 +44,10 @@ export default class SummaryWSItem extends React.Component {
           <label className="booking-date-label" htmlFor="booking_date">
             Date
           </label>
-          <DatePicker selected={booking_date} onChange={handleDateChange} />
+          <DatePicker className="date-picker" selected={booking_date} onChange={handleDateChange} />
           <label htmlFor="booking_time">Time</label>
           <DatePicker
+            className="time-picker"
             selected={booking_time}
             onChange={handleTimeChange}
             showTimeSelect

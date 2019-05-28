@@ -36,23 +36,12 @@ export default class DiningScreen extends React.Component {
     const { handleClick } = this;
     return (
       <div className="dining-screen">
-        <div className="dining-screen-header">DINING</div>
         <div className="room-service" id="room-service" onClick={handleClick}>
           ROOM SERVICE
         </div>
         <p>-or-</p>
         <div className="reserve-table" id="reserve-table" onClick={handleClick}>
           RESERVE A TABLE
-        </div>
-        <div className="dining-footer">
-          <button
-            className="next-button"
-            onClick={this.props.clearAmenity}
-            type="button"
-          >
-          ←
-          </button>
-          <span>MAIN MENU</span>
         </div>
       </div>
     );
@@ -100,7 +89,14 @@ export default class DiningScreen extends React.Component {
     }
   };
 
+  // render() {
+  //   return <div>{this.renderFunction()}</div>;
+  // }
   render() {
-    return <div>{this.renderFunction()}</div>;
+    return (
+      <div className="dining">
+        <div className="dining-header">Dining</div>
+        {this.renderFunction()}
+      </div>);
   }
 }
