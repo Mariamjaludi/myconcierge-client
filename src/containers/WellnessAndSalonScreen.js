@@ -14,10 +14,14 @@ export default class WellnessAndSalonScreen extends React.Component {
   };
 
   editOrder = item => {
-    const { order } = this.state;
-    const filteredOrders = order.filter(order => order !== item);
+    let { order } = this.state;
+    // const foundFood = order.find(o => o === food )
+    let index = order.indexOf(item)
+    // debugger
+    order.splice(index, 1)
+    // const filteredFood = order.filter(order => order !== food);
     this.setState({
-      order: filteredOrders
+      order: order
     });
   };
 
@@ -48,8 +52,9 @@ export default class WellnessAndSalonScreen extends React.Component {
     const { collectOrder, handleClick, editOrder, categorizeServices } = this;
     return (
       <div className="wellness-salon-screen">
-        <div>{amenityName}</div>
-        { !this.state.switchToConfirmScreen ?
+        <div className="ws-header">{amenityName}</div>
+        <div className="ws-content">
+          { !this.state.switchToConfirmScreen ?
           <WSMenuContainer
             services={services}
             guest={guest}
@@ -66,8 +71,8 @@ export default class WellnessAndSalonScreen extends React.Component {
             createBooking={createBooking}
             categorizeServices={categorizeServices}
           />
-        }
-        <div>footer</div>
+          }
+        </div>
       </div>
     );
   }

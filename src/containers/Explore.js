@@ -23,16 +23,6 @@ export default class Explore extends React.Component {
             {attractions.map(attraction => <ExploreCard attraction={attraction} key={attraction.id}/>)}
           </div>
         </div>
-        <div className="explore-footer">
-          <button
-            className="next-button"
-            onClick={this.props.clearAmenity}
-            type="button"
-          >
-            ←
-          </button>
-          <span>MAIN MENU</span>
-        </div>
       </div>
     )
   }

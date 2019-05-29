@@ -14,7 +14,7 @@ class App extends React.Component {
     hotels: [],
     guest: null,
     homeScreenClick: false,
-    logged_in: false
+    loggedIn: false
   };
 
   componentDidMount () {
@@ -67,7 +67,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { guest, hotels, logged_in } = this.state;
+    const { guest, hotels, loggedIn } = this.state;
     const { findGuest, handleHomeScreenClick, getHotelName, logOut } = this;
     // debugger
     return (
@@ -81,7 +81,7 @@ class App extends React.Component {
                 getHotelName={getHotelName}
                 hotel={hotels[0]}
                 guest={guest}
-                logged_in={logged_in}
+                loggedIn={loggedIn}
                 logOut={logOut}
               />
             )}
