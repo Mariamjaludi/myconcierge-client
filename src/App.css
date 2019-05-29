@@ -303,9 +303,9 @@ input[type="radio"], input[type="submit"] {
     "myconcierge"
 }
 
-.guest-home-screen.hide {
+/* .guest-home-screen.hide {
   background: url('');
-}
+} */
 
 .navbar .logo {
   grid-area: nav-logo;
@@ -1597,7 +1597,7 @@ input[type="radio"], input[type="submit"] {
   grid-area: account-content;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto;
+  grid-template-rows: 50px 70px auto;
   grid-template-areas:
   "guest-info"
   "room-info"
@@ -1612,19 +1612,16 @@ input[type="radio"], input[type="submit"] {
 .account-screen .guest-info {
   grid-area: guest-info;
   text-align: left;
-  margin-left: 5%;
-  margin-right: 5%;
 }
 
 .account-screen .room-info {
   grid-area: room-info;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr;
   grid-template-areas:
   "room-booking-label room-meta";
-  margin-left: 5%;
-  margin-right: 5%;
+  /* border-bottom: solid 1px #E4E4E3; */
 }
 
 .room-booking-label {
@@ -1635,12 +1632,31 @@ input[type="radio"], input[type="submit"] {
 .room-meta {
   text-align: right;
   grid-area: room-meta;
-}
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "room-type"
+  "cost"
+  "days-stayed";
 
+}
+.room-type {
+  grid-area: room-type;
+}
+.cost {
+  grid-area: cost;
+}
+.days-stayed {
+  grid-area: days-stayed;
+}
 .account-screen .booking-tbl {
   grid-area: booking-tbl;
+  border-bottom: solid 1px #E4E4E3;
 }
-
+.booking-details .service-price {
+  text-align: right;
+}
 .account-screen .total-value {
   grid-area: total-value;
   text-align: right;
@@ -1649,7 +1665,9 @@ input[type="radio"], input[type="submit"] {
 
 .amenity-header {
   text-align: left;
-  margin: 5%
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .booking-details {
@@ -1659,12 +1677,12 @@ input[type="radio"], input[type="submit"] {
   grid-template-rows: auto;
   grid-template-areas:
     "service-name service-date-time service-price";
+
 }
 
 .service-name {
   grid-area: service-name;
   text-align: justify;
-  margin-left: 15%
 }
 
 .service-price {

@@ -19,13 +19,32 @@ class GuestHomeScreen extends React.Component {
     amenity: null,
     booking: null,
     view: "",
-    navClicked: false
+    navClicked: false,
+    showConfirmation: false,
+    diningChoice: null,
+    showRSSummary: false
   };
+
+  clickToShowConfirmation = () => {
+    this.setState({
+      showConfirmation: true
+    })
+  }
+
+  clickToShowReserveOrRoomService = diningChoice => {
+    this.setState({diningChoice})
+  }
+
+  clicktoShowRSSummary = () => {
+    this.setState({
+      showRSSummary: true
+    })
+  }
 
   clearAmenity = () => {
 
     this.setState({ amenity: null, view: "" });
-    document.querySelector('.guest-home-screen').classList.remove('hide');
+    // document.querySelector('.guest-home-screen').classList.remove('hide');
   };
 
   createBooking = (
@@ -86,21 +105,28 @@ class GuestHomeScreen extends React.Component {
   }
 
   onLinkClick = (amenity = {}) => {
+    // debugger
     // document.querySelector('.guest-home-screen').classList.add('hide');
+
     this.setState({
       amenity,
       view: amenity.amenity_name,
-      navClicked: true
+      navClicked: true,
+      showConfirmation: false,
+      diningChoice: false,
+      showRSSummary: false
     });
   };
 
   renderFunction = () => {
     const {
       createBooking,
-      clearAmenity
+      clearAmenity,
+      clickToShowReserveOrRoomService,
+      clicktoShowRSSummary
     } = this;
     const { hotel, guest } = this.props;
-    const { amenity, view } = this.state;
+    const { amenity, view , diningChoice, showRSSummary } = this.state;
 
     switch (view) {
       default:
@@ -108,10 +134,14 @@ class GuestHomeScreen extends React.Component {
       case "Dining":
         return (
           <DiningScreen
+            diningChoice={diningChoice}
             createBooking={createBooking}
             guest={guest}
             services={amenity.services}
+            clickToShowReserveOrRoomService={clickToShowReserveOrRoomService}
             clearAmenity={clearAmenity}
+            clicktoShowRSSummary={clicktoShowRSSummary}
+            showRSSummary={showRSSummary}
           />
         );
       case "Housekeeping":
@@ -139,6 +169,8 @@ class GuestHomeScreen extends React.Component {
             amenityName={amenity.amenity_name}
             services={amenity.services}
             clearAmenity={clearAmenity}
+            showConfirmation={this.state.showConfirmation}
+            clickToShowConfirmation={this.clickToShowConfirmation}
           />
         );
       case "Wake Up Call":

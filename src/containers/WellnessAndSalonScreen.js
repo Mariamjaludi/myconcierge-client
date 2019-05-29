@@ -3,8 +3,7 @@ import WSMenuContainer from './WSMenuContainer'
 import ConfirmWSOrderScreen from  './ConfirmWSOrderScreen'
 export default class WellnessAndSalonScreen extends React.Component {
   state = {
-    order: [],
-    switchToConfirmScreen: false
+    order: []
   }
 
   collectOrder = order => {
@@ -25,10 +24,9 @@ export default class WellnessAndSalonScreen extends React.Component {
     });
   };
 
-  handleClick = () => {
-    this.setState({switchToConfirmScreen: true})
-
-  };
+  // handleClick = () => {
+  //   this.setState({switchToConfirmScreen: true})
+  // };
 
   categorizeServices = (services) => {
     //get an array of service types
@@ -54,13 +52,13 @@ export default class WellnessAndSalonScreen extends React.Component {
       <div className="wellness-salon-screen">
         <div className="ws-header">{amenityName}</div>
         <div className="ws-content">
-          { !this.state.switchToConfirmScreen ?
+          { !this.props.showConfirmation ?
           <WSMenuContainer
             services={services}
             guest={guest}
             createBooking={createBooking}
             collectOrder={collectOrder}
-            handleClick={handleClick}
+            handleClick={this.props.clickToShowConfirmation}
             clearAmenity={clearAmenity}
             categorizeServices={categorizeServices}
           /> :
