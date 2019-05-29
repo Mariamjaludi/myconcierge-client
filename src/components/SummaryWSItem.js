@@ -6,7 +6,8 @@ import "react-datepicker/dist/react-datepicker.css";
 export default class SummaryWSItem extends React.Component {
   state = {
     booking_date: new Date(),
-    booking_time: new Date()
+    booking_time: new Date(),
+    reserved: false
   };
 
   handleRemoveClick = event => {
@@ -29,6 +30,7 @@ export default class SummaryWSItem extends React.Component {
     const date = booking_date.toDateString();
     const time = booking_time.toLocaleTimeString().slice(0, -3);
     createBooking(item, date, time);
+    this.setState({reserved: true})
   };
 
   render() {
@@ -70,11 +72,12 @@ export default class SummaryWSItem extends React.Component {
         <div className="remove" onClick={handleRemoveClick}>
           remove
         </div>
-        <div className="book" onClick={createItemBooking}>
+        {this.state.reserved ? <div className="book">
+          booked
+        </div> : <div className="book" onClick={createItemBooking}>
           book
         </div>
-
-
+      }
       </div>
     );
   }

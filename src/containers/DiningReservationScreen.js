@@ -7,7 +7,8 @@ export default class DiningReservationScreen extends React.Component {
   state = {
     booking_date: new Date(),
     booking_time: new Date(),
-    num_of_guests: null
+    num_of_guests: null,
+    reserved: false
   };
 
   handleChange = event => {
@@ -34,6 +35,7 @@ export default class DiningReservationScreen extends React.Component {
     let time = booking_time.toLocaleTimeString().slice(0, -3);
     this.props.createBooking(reserveTable[0], date, time, num_of_guests);
     // clearAmenity();
+    this.setState({reserved: true})
   };
 
   render() {
@@ -73,8 +75,14 @@ export default class DiningReservationScreen extends React.Component {
             name="num_of_guests"
             placeholder="No. of Guests"
           />
-          <input className="submit-btn" type="submit" value="Reserve" />
+          <div className="submit-div">
+            {this.state.reserved ? <div className="confirm-msg">Reservation Confirmed</div> : null}
+            <div className="submit-btn-div">
+              <input className="submit-btn" type="submit" value="Reserve" />
+            </div>
+          </div>
         </form>
+
       </div>
     );
   }

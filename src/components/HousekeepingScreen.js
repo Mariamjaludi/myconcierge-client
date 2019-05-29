@@ -6,7 +6,8 @@ export default class HousekeepingScreen extends React.Component {
   state = {
     booking_date: new Date(),
     booking_time: new Date(),
-    housekeepingType: ""
+    housekeepingType: "",
+    reserved: false
   };
 
   handleChange = e => {
@@ -35,6 +36,7 @@ export default class HousekeepingScreen extends React.Component {
     let date = booking_date.toDateString();
     let time = booking_time.toLocaleTimeString().slice(0, -3);
     createBooking(housekeeping[0], date, time);
+    this.setState({reserved: true})
   };
   render() {
     const { booking_time, housekeepingType } = this.state;
@@ -85,9 +87,12 @@ export default class HousekeepingScreen extends React.Component {
               onChange={handleChange}
             />
           </div>
-          <div className="submit-btn">
-            <input type="submit" value="CONFIRM" />
-          </div>  
+          <div className="submit-div">
+            {this.state.reserved ? <div className="confirm-msg">Reservation Confirmed</div> : null}
+            <div className="submit-btn-div">
+              <input className="submit-btn" type="submit" value="Confirm" />
+            </div>
+          </div>
         </form>
       </div>
     );

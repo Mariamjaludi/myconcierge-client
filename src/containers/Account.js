@@ -66,24 +66,26 @@ export default class Account extends React.Component {
       return (
         <div className="account-screen">
           <div className="account-header">Account</div>
-          <div className="guest-info">
-            <div className="guest">Guest: {guest.guest_name}</div>
-            <div className="check-in">Check-in date: {guest.check_in}</div>
-          </div>
-          <div className="room-info">
-            <div className="room-booking-label">Room Booking</div>
-            <div className="room-meta">
-              <div className="room-type">{room.room_type}</div>
-              <div className="cost">£ {room.cost_per_night} (per night)</div>
-              <div className="days-stayed">Days stayed: {guest.days_stayed}</div>
+          <div className="account-content">
+            <div className="guest-info">
+              <div className="guest">Guest: {guest.guest_name}</div>
+              <div className="check-in">Check-in date: {guest.check_in}</div>
             </div>
+            <div className="room-info">
+              <div className="room-booking-label">Room Booking</div>
+              <div className="room-meta">
+                <div className="room-type">{room.room_type}</div>
+                <div className="cost">£ {room.cost_per_night} (per night)</div>
+                <div className="days-stayed">Days stayed: {guest.days_stayed}</div>
+              </div>
+            </div>
+            <div className="booking-tbl">
+            {displayBookings("Dining")}
+            {displayBookings("Wellness")}
+            {displayBookings("Salon")}
+            </div>
+            <div className="total-value">Total: £{this.getTotal()}</div>
           </div>
-          <div className="booking-tbl">
-          {displayBookings("Dining")}
-          {displayBookings("Wellness")}
-          {displayBookings("Salon")}
-        </div>
-          <div className="total-value">Total: £{this.getTotal()}</div>
         </div>
       )
     } else return <div />

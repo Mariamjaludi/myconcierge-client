@@ -50,7 +50,7 @@ class GuestHomeScreen extends React.Component {
   };
 
   exploreOrAccountClicked = exploreOrAccount => {
-    document.querySelector('.guest-home-screen').classList.add('hide');
+    // document.querySelector('.guest-home-screen').classList.add('hide');
     this.setState({
       amenity: exploreOrAccount,
       view: exploreOrAccount,
@@ -86,7 +86,7 @@ class GuestHomeScreen extends React.Component {
   }
 
   onLinkClick = (amenity = {}) => {
-    document.querySelector('.guest-home-screen').classList.add('hide');
+    // document.querySelector('.guest-home-screen').classList.add('hide');
     this.setState({
       amenity,
       view: amenity.amenity_name,
