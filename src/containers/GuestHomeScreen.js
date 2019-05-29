@@ -18,16 +18,14 @@ class GuestHomeScreen extends React.Component {
   state = {
     amenity: null,
     booking: null,
-    view: ""
-  };
-
-  getClickedAmenity = amenity => {
-    this.setState({ amenity, view: amenity.amenity_name });
+    view: "",
+    navClicked: false
   };
 
   clearAmenity = () => {
 
     this.setState({ amenity: null, view: "" });
+    document.querySelector('.guest-home-screen').classList.remove('hide');
   };
 
   createBooking = (
@@ -51,18 +49,49 @@ class GuestHomeScreen extends React.Component {
       .then(bookings => this.setState({ bookings }));
   };
 
-  exploreOrAccountClicked = (exploreOrAccount) => {
-    // debugger
-    this.setState({ amenity: exploreOrAccount, view: exploreOrAccount });
+  exploreOrAccountClicked = exploreOrAccount => {
+    document.querySelector('.guest-home-screen').classList.add('hide');
+    this.setState({
+      amenity: exploreOrAccount,
+      view: exploreOrAccount,
+      navClicked: true
+    });
   };
 
-  onCardClick = (path, amenity = {}) => {
-    this.setState({ amenity, view: amenity.amenity_name });
-  };
+  exploreOrAccountHover = exploreOrAccount => {
+    if (!this.state.navClicked) {
+      this.setState({
+        amenity: exploreOrAccount,
+        view: exploreOrAccount
+      })
+    }
+  }
+
+  handleHover = (amenity = {}) => {
+    if (!this.state.navClicked) {
+      this.setState({
+        amenity,
+        view: amenity.amenity_name
+      })
+    }
+  }
+
+  handleHoverOff = () => {
+    if (!this.state.navClicked) {
+      this.setState({
+        amenity: null,
+        view: ''
+      })
+    }
+  }
 
   onLinkClick = (amenity = {}) => {
     document.querySelector('.guest-home-screen').classList.add('hide');
-    this.setState({ amenity, view: amenity.amenity_name });
+    this.setState({
+      amenity,
+      view: amenity.amenity_name,
+      navClicked: true
+    });
   };
 
   renderFunction = () => {
@@ -139,12 +168,6 @@ class GuestHomeScreen extends React.Component {
 
   imageRenderFunction = () => {
     const { amenity, view } = this.state;
-    // let divStyle = {
-    //   background: `url(${amenity.image})`,
-    //   backgroundRepeat: "no-repeat",
-    //   backgroundSize: "cover",
-    //   backgroundPosition: "center"
-    // };
 
     switch (view) {
       default:
@@ -164,16 +187,26 @@ class GuestHomeScreen extends React.Component {
   render() {
 
     const { hotel, loggedIn, logOut } = this.props;
-    const { onLinkClick, exploreOrAccountClicked, onLinkHover } = this
-    const {view, amenity} = this.state
+    const { onLinkClick, exploreOrAccountClicked, exploreOrAccountHover, onLinkHover, handleHover, handleHoverOff } = this
+    const {view, amenity, navClicked} = this.state
     // debugger
     if (hotel) {
       // let hotelName = getHotelName();
       return (
         <div className="guest-home-screen">
           <div className="amenity-img">{amenity ? this.imageRenderFunction() : null}</div>
-          <NavBar hotel={hotel} onLinkClick={onLinkClick} exploreOrAccountClicked={exploreOrAccountClicked} loggedIn={loggedIn} logOut={logOut} onLinkHover={onLinkHover}/>
-          <div className="amenity-page">{view ? this.renderFunction() : null }</div>
+          <NavBar
+            hotel={hotel}
+            onLinkClick={onLinkClick}
+            exploreOrAccountClicked={exploreOrAccountClicked}
+            loggedIn={loggedIn}
+            logOut={logOut}
+            onLinkHover={onLinkHover}
+            handleHover={handleHover}
+            exploreOrAccountHover={exploreOrAccountHover}
+            handleHoverOff={handleHoverOff}
+          />
+        <div className="amenity-page">{view && navClicked ? this.renderFunction() : null }</div>
         </div>
       );
     } else return <div />;

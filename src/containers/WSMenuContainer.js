@@ -6,7 +6,7 @@ export default class WSMenuContainer extends React.Component {
     // debugger
     const { collectOrder } = this.props;
     return (
-      <div>
+      <div key={items[0].service_type}>
         <div className="type-label">{items[0].service_type.toUpperCase()}</div>
         <div className="menu-items">
           {items.map(item => (
@@ -18,7 +18,7 @@ export default class WSMenuContainer extends React.Component {
   };
 
   render() {
-    const { handleClick, clearAmenity, services, categorizeServices } = this.props;
+    const { handleClick, services, categorizeServices } = this.props;
     const { renderMenuItems } = this;
     const catServices = categorizeServices(services)
     return (

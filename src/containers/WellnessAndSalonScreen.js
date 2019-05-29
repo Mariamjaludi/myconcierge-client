@@ -14,10 +14,14 @@ export default class WellnessAndSalonScreen extends React.Component {
   };
 
   editOrder = item => {
-    const { order } = this.state;
-    const filteredOrders = order.filter(order => order !== item);
+    let { order } = this.state;
+    // const foundFood = order.find(o => o === food )
+    let index = order.indexOf(item)
+    // debugger
+    order.splice(index, 1)
+    // const filteredFood = order.filter(order => order !== food);
     this.setState({
-      order: filteredOrders
+      order: order
     });
   };
 

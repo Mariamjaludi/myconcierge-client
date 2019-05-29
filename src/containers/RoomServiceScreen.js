@@ -16,7 +16,7 @@ export default class RoomServiceScreen extends React.Component {
   };
 
   render() {
-    const { services, guest, createBooking, clearAmenity } = this.props;
+    const { services, guest, createBooking } = this.props;
     const { collectOrder, handleClick } = this;
     return (
       <div className="dining-room-service">

@@ -455,12 +455,23 @@
 .dining-reservation-screen .reservation-form .booking-date-label {
   grid-area: dining-date;
   text-align: left;
-  /* padding-left: 15px; */
+  text-align: left;
+  font-size: 0.75rem;
+  font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 400;
+  letter-spacing: .07rem;
+  text-transform: uppercase;
 }
 
 .dining-reservation-screen .reservation-form .booking-time-label {
   grid-area: dining-time;
   text-align: left;
+  font-size: 0.75rem;
+  font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 400;
+  letter-spacing: .07rem;
+  text-transform: uppercase;
+
 }
 
 .dining-reservation-screen .reservation-form .date-picker {
@@ -492,6 +503,11 @@
 .dining-reservation-screen .reservation-form .no-of-guests-label {
   grid-area: guests-label;
   text-align: left;
+  font-size: 0.75rem;
+  font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 400;
+  letter-spacing: .07rem;
+  text-transform: uppercase;
 }
 
 .dining-reservation-screen .reservation-form .no-of-guests-input {
@@ -1336,7 +1352,7 @@
 /*               explore                     */
 .explore-card-container, .amenities {
   width: 100%;
-  height: 500px;
+  height: 100vh;
 }
 
 .explore-card-container .wrap, .amenities .wrap {
@@ -1361,8 +1377,8 @@
 .explore-card, .amenity-card, .amenity-explore-card, .amenity-account-card  {
   cursor: pointer;
   margin: 10px;
-	width: 300px;
-	height: 490px;
+	width: 13rem;
+	height: 20rem;
 	text-align: center;
 	border-radius: 3px;
 	-webkit-transition: 200ms ease-in-out;
@@ -1380,109 +1396,96 @@
 
 .explore-card h1, .amenity-card h1, .amenity-explore-card h1, .amenity-account-card h1 {
 	color: #fff;
-	padding: 30px;
+	padding: 7%;
 	margin-top: 100px;
 	text-align: center;
-	font-weight: 100;
-	font-size: 25px;
+	font-weight: 200;
+	font-size: 1.2rem;
 	background: rgba(0,0,0,0.8);
 	-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.7);
 	box-shadow: 0 0 30px rgba(0,0,0,0.8);
 }
+/*                      account                     */
 
 .account-screen {
   display: grid;
-  grid-template-columns: 10px auto auto auto auto auto 10px;
-  grid-template-rows: 80px 100px auto auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
   grid-template-areas:
-    ". . . account-header . . ."
-    ". guest-info . . . . ."
-    ". room-booking-label . . room-info . ."
-    ". . booking-tbl booking-tbl booking-tbl . ."
-    ". . . . total-label total-value .";
+  "account-header"
+  "guest-info"
+  "room-info"
+  "booking-tbl"
+  "total-value"
 }
 
-.top-table-divide {
-  grid-area: top-line;
-}
-
-.bottom-table-divide {
-  grid-area: bottom-line;
-}
 .account-screen .account-header {
   grid-area: account-header;
-  text-transform: uppercase;
-  font-size: 50px;
 }
-
 .account-screen .guest-info {
   grid-area: guest-info;
   text-align: left;
 }
-
-.account-screen .room-booking-label {
-  grid-area: room-booking-label;
-  text-transform: uppercase;
-  text-align: left;
-}
-
 .account-screen .room-info {
   grid-area: room-info;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "room-booking-label room-meta";
+}
+
+.room-booking-label {
+  grid-area: room-booking-label;
+}
+
+.room-meta {
+  grid-area: room-meta;
 }
 
 .account-screen .booking-tbl {
   grid-area: booking-tbl;
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto 1fr 1fr;
-  grid-template-areas:
-  "summary-header . . ."
-  "booking-details booking-details booking-details booking-details";
 }
-
-.account-screen .booking-tbl .amenity-booking-summary .amenity-header {
-  grid-area: summary-header;
-  text-align: left;
-  text-transform: uppercase;
-  padding: 10px;
-}
-
-.account-screen .booking-tbl .amenity-booking-summary .booking-details {
-  grid-area: booking-details;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 15px;
-  grid-template-areas: "service-name service-date-time service-price";
-  padding-left: 15px;
-  padding-bottom: 5px;
-  font-size: 12px;
-}
-
-.account-screen .booking-tbl .amenity-booking-summary .booking-details .service-name {
-  grid-area: service-name;
-  text-align: left;
-  padding-left: 10px;
-}
-
-.account-screen .booking-tbl .amenity-booking-summary .booking-details .service-date-time {
-  grid-area: service-date-time;
-  text-align: center;
-}
-
-.account-screen .booking-tbl .amenity-booking-summary .booking-details .service-price {
-  grid-area: service-price;
-
-}
-
-.account-screen .total-label {
-  grid-area: total-label;
-}
-
 .account-screen .total-value {
   grid-area: total-value;
+  text-align: right;
 }
 
-.amenity-account-card {
+/* .amenity-booking-summary {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+  grid-template-areas:
+  "amenity-header"
+  "booking-details"
+} */
+
+.amenity-header {
+  text-align: left;
+  margin: 5%
+}
+
+.booking-details {
+  grid-area: booking-details;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "service-name service-date-time service-price";
+}
+
+.service-name {
+  grid-area: service-name;
+  text-align: justify;
+  margin-left: 15%
+}
+.service-price {
+  grid-area: service-price;
+}
+.service-date-time {
+  grid-area: service-date-time;
+}
+/* .amenity-account-card {
   background: url(https://images.pexels.com/photos/164686/pexels-photo-164686.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
 }
 
@@ -1494,4 +1497,4 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-}
+} */

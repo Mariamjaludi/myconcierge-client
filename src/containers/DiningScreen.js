@@ -25,10 +25,14 @@ export default class DiningScreen extends React.Component {
 
   editOrder = food => {
     // debugger
-    const { order } = this.state;
-    const filteredFood = order.filter(order => order !== food);
+    let { order } = this.state;
+    // const foundFood = order.find(o => o === food )
+    let index = order.indexOf(food)
+    // debugger
+    order.splice(index, 1)
+    // const filteredFood = order.filter(order => order !== food);
     this.setState({
-      order: filteredFood
+      order: order
     });
   };
 

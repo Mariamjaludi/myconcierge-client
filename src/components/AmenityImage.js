@@ -3,21 +3,17 @@ import React from 'react'
 export default class AmenityImage extends React.Component {
 
   renderFunction = () => {
-    // let exploreDiv ={
-    //   backgroundImage: "url(https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80)"
-    // }
-    // let accountDiv = {
-    //   backgroundImage: "url(https://images.pexels.com/photos/164686/pexels-photo-164686.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)"
-    // }
+   // debugger
     const { amenity, view } = this.props;
     switch (view) {
       case "Explore":
-        return <img className="explore-img" src="https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" alt="" />
+        return <img className="explore-img" src="https://66.media.tumblr.com/64500e78ce2554216fba526f99ce09b0/tumblr_o1vcv5f6cN1sslvquo1_500.gif" alt="" />
       case "Account":
         return <img className="account-img" src="https://images.pexels.com/photos/164686/pexels-photo-164686.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""/>
       case "Dining":
       case "Housekeeping":
       case "Wellness":
+      case "Chauffeur/Taxi":
       case "Salon":
       case "Wake Up Call":
         return <img src={`${amenity.image}`} alt=""/>
@@ -38,5 +34,8 @@ export default class AmenityImage extends React.Component {
     return this.renderFunction()
   }
 }
+
+// https://images.pexels.com/photos/164686/pexels-photo-164686.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940
 // <img src={`${amenity.image}`} />
   // <div className={`${view}-img`} style={divStyle}>test</div>
+// <a href="http://freegifmaker.me/images/2fnC5/"><img src="http://i.freegifmaker.me/1/5/5/9/0/8/1559085517133828.gif?1559085544" alt="gifs website"/></a><br/><a href="http://www.freegifmaker.me/">FreeGifMaker.me<a/>

@@ -30,15 +30,17 @@ export default class ConfirmRoomServiceScreen extends React.Component {
     // clearAmenity();
   };
 
-  orderSum = () => {
+  orderSum = (orders) => {
     let sum = 0;
-    this.props.order.forEach(order => (sum = sum + order.price));
+    orders.forEach(order => (sum = sum + order.price));
     return sum.toFixed(2);
   };
 
   render() {
     const { handleTimeChange, handleDateChange, handleSubmit, orderSum } = this;
-    const { order, editOrder } = this.props;
+    const { order, editOrder, clearAmenity } = this.props;
+    //makes sure only one of each item is in order
+    // let orders = [...new Set(order)]
     return (
       <div className="confirm-rs-screen">
         <p className="select-label">Select a date and time for your order</p>
@@ -64,14 +66,14 @@ export default class ConfirmRoomServiceScreen extends React.Component {
             />
           </div>
           <p className="your-order-lbl">Your Order:</p>
-          <DiningOrderContainer order={order} editOrder={editOrder} />
-          <div className="order-sum">Total: {orderSum()}</div>
+          { order.length > 0 ? <DiningOrderContainer order={order} editOrder={editOrder} /> : null }
+          <div className="order-sum">Total: {orderSum(order)}</div>
           <div className="cancel-and-submit">
             <div className="submit-btn">
               <input type="submit" value="Order" />
             </div>
             <div className="cancel-btn">
-              <button type="button" value="Cancel">Cancel Order</button>
+              <button onClick={clearAmenity} type="button" value="Cancel">Cancel Order</button>
             </div>
           </div>
         </form>
