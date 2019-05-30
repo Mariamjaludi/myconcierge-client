@@ -28,8 +28,10 @@ export default class WakeUpCallScreen extends React.Component {
 
     let date = booking_date.toDateString();
     let time = booking_time.toLocaleTimeString().slice(0, -3);
-    createBooking(wakeUpCall[0], date, time);
-    this.setState({reserved: true})
+    if (wakeUpCall.length > 0) {
+      createBooking(wakeUpCall[0], date, time);
+      this.setState({reserved: true})
+    }
   };
 
   render() {

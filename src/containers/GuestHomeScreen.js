@@ -9,7 +9,7 @@ import ChauffeurTaxiScreen from "../components/ChauffeurTaxiScreen"
 import HousekeepingScreen from "../components/HousekeepingScreen"
 import WakeUpCallScreen from "../components/WakeUpCallScreen"
 import Explore from "./Explore";
-import Account from "./Account";
+import Billing from "./Billing";
 
 import NavBar from "../components/NavBar"
 import AmenityImage from '../components/AmenityImage'
@@ -29,6 +29,10 @@ class GuestHomeScreen extends React.Component {
     this.setState({
       showConfirmation: true
     })
+  }
+
+  handleLogoClick = () => {
+    this.setState({ amenity: null, view: "", navClicked: false });
   }
 
   clickToShowReserveOrRoomService = diningChoice => {
@@ -68,20 +72,20 @@ class GuestHomeScreen extends React.Component {
       .then(bookings => this.setState({ bookings }));
   };
 
-  exploreOrAccountClicked = exploreOrAccount => {
+  exploreOrBillingClicked = exploreOrBilling => {
     // document.querySelector('.guest-home-screen').classList.add('hide');
     this.setState({
-      amenity: exploreOrAccount,
-      view: exploreOrAccount,
+      amenity: exploreOrBilling,
+      view: exploreOrBilling,
       navClicked: true
     });
   };
 
-  exploreOrAccountHover = exploreOrAccount => {
+  exploreOrBillingHover = exploreOrBilling => {
     if (!this.state.navClicked) {
       this.setState({
-        amenity: exploreOrAccount,
-        view: exploreOrAccount
+        amenity: exploreOrBilling,
+        view: exploreOrBilling
       })
     }
   }
@@ -187,9 +191,9 @@ class GuestHomeScreen extends React.Component {
             clearAmenity={clearAmenity}
           />
         );
-      case "Account":
+      case "Billing":
         return (
-          <Account
+          <Billing
             guest={guest}
             hotel={hotel}
             clearAmenity={clearAmenity}
@@ -211,15 +215,15 @@ class GuestHomeScreen extends React.Component {
       case "Salon":
       case "Wake Up Call":
       case "Explore":
-      case "Account":
+      case "Billing":
         return <AmenityImage amenity={amenity} view={view}/>
     }
   }
 
   render() {
 
-    const { hotel, loggedIn, logOut } = this.props;
-    const { onLinkClick, exploreOrAccountClicked, exploreOrAccountHover, onLinkHover, handleHover, handleHoverOff } = this
+    const { hotel, loggedIn, logOut, guest } = this.props;
+    const { onLinkClick, exploreOrBillingClicked, exploreOrBillingHover, onLinkHover, handleHover, handleHoverOff, handleLogoClick } = this
     const {view, amenity, navClicked} = this.state
     // debugger
     if (hotel) {
@@ -228,15 +232,17 @@ class GuestHomeScreen extends React.Component {
         <div className="guest-home-screen">
           <div className="amenity-img">{amenity ? this.imageRenderFunction() : null}</div>
           <NavBar
+            guest={guest}
             hotel={hotel}
             onLinkClick={onLinkClick}
-            exploreOrAccountClicked={exploreOrAccountClicked}
+            exploreOrBillingClicked={exploreOrBillingClicked}
             loggedIn={loggedIn}
             logOut={logOut}
             onLinkHover={onLinkHover}
             handleHover={handleHover}
-            exploreOrAccountHover={exploreOrAccountHover}
+            exploreOrBillingHover={exploreOrBillingHover}
             handleHoverOff={handleHoverOff}
+            handleLogoClick={handleLogoClick}
           />
         <div className="amenity-page">{view && navClicked ? this.renderFunction() : null }</div>
         </div>

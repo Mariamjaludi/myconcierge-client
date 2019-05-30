@@ -27,9 +27,11 @@ export default class ConfirmRoomServiceScreen extends React.Component {
     const { booking_date, booking_time } = this.state;
     let date = booking_date.toDateString()
     let time = booking_time.toLocaleTimeString().slice(0, -3)
-    order.forEach(o => createBooking(o, date, time));
-    // clearAmenity();
-    this.setState({reserved: true})
+    if (order > 0) {
+      order.forEach(o => createBooking(o, date, time));
+      // clearAmenity();
+      this.setState({reserved: true})
+    }
   };
 
   orderSum = (orders) => {

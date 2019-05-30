@@ -2,11 +2,12 @@ import React from "react";
 import NavLink from "./NavLink";
 export default class NavBar extends React.Component {
   render() {
-    const { onLinkClick, exploreOrAccountClicked, exploreOrAccountHover, hotel, handleHover, handleHoverOff } = this.props;
+    const { guest, onLinkClick, exploreOrBillingClicked, exploreOrBillingHover, hotel, handleHover, handleHoverOff, handleLogoClick } = this.props;
     return (
       <div className="navbar">
-        <div className="logo"></div>
+        <div onClick={handleLogoClick} className="logo"></div>
         <div className="hotel-name">{hotel.hotel_name}</div>
+        <div className="guestWelcome">Welcome, {guest.guest_name}</div>
         <div className="amenity-links">
           {hotel.amenities.map(a => (
             <NavLink
@@ -20,20 +21,20 @@ export default class NavBar extends React.Component {
           <div
             id="Explore"
             className="amenity-link"
-            onClick={() => exploreOrAccountClicked("Explore")}
-            onMouseEnter={() => exploreOrAccountHover("Explore")}
+            onClick={() => exploreOrBillingClicked("Explore")}
+            onMouseEnter={() => exploreOrBillingHover("Explore")}
             onMouseLeave={() => handleHoverOff()}
           >Explore the City</div>
           <div
-            id="Account"
+            id="Billing"
             className="amenity-link"
-            onClick={() => exploreOrAccountClicked("Account")}
-            onMouseEnter={() => exploreOrAccountHover("Account")}
+            onClick={() => exploreOrBillingClicked("Billing")}
+            onMouseEnter={() => exploreOrBillingHover("Billing")}
             onMouseLeave={() => handleHoverOff()}
-          >Account</div>
+          >Billing</div>
         </div>
         <div className="logout" onClick={this.props.logOut}>Log Out</div>
-        <div className="myConcierge-footer">Powered by MyConcierge</div>
+        <div className="myConcierge-footer"></div>
     </div>
     );
   }

@@ -35,8 +35,10 @@ export default class HousekeepingScreen extends React.Component {
     // debugger
     let date = booking_date.toDateString();
     let time = booking_time.toLocaleTimeString().slice(0, -3);
-    createBooking(housekeeping[0], date, time);
-    this.setState({reserved: true})
+    if (housekeeping > 0) {
+      createBooking(housekeeping[0], date, time);
+      this.setState({reserved: true})
+    }
   };
   render() {
     const { booking_time, housekeepingType } = this.state;

@@ -66,6 +66,22 @@ input[type="radio"], input[type="submit"] {
   text-align: center;
   background-color: Transparent;
 }
+.guestWelcome {
+  font-size: 0.68rem;
+  font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 400;
+  letter-spacing: .1rem;
+  /* text-transform: uppercase; */
+  color: #B8B8B7;
+}
+.hotel-name {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: .125rem;
+  text-transform: uppercase;
+  padding: 6px;
+  transition: 0.25s;
+}
 
 .confirm-msg {
   font-size: 0.90rem;
@@ -251,7 +267,7 @@ input[type="radio"], input[type="submit"] {
 /*              guest home screen              */
 .guest-home-screen {
   height: 100vh;
-  z-index: 1;
+  overflow: hidden;
   background-image: url(./assets/images/edited_background.JPG);
   background-size: cover;
   display: grid;
@@ -373,13 +389,13 @@ input[type="radio"], input[type="submit"] {
   /* animation: slide-in .3s forwards; */
 }
 
-.dining, .housekeeping-screen, .taxi-screen, .wellness-salon-screen, .wakeup-call-screen, .explore-screen .account-screen {
+.dining, .housekeeping-screen, .taxi-screen, .wellness-salon-screen, .wakeup-call-screen, .explore-screen .Billing-screen {
   background: #fff;
   height: 100vh;
   /* animation: slide-in .3s forwards; */
 }
 
-.amenity-page .account-screen, .amenity-page .explore-screen {
+.amenity-page .Billing-screen, .amenity-page .explore-screen {
   background: #fff;
   min-height: 100vh;
 }
@@ -479,7 +495,6 @@ input[type="radio"], input[type="submit"] {
 
 .dining-reservation-screen .reservation-form .booking-date-label {
   grid-area: dining-date;
-  text-align: left;
   text-align: left;
   font-size: 0.75rem;
   font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
@@ -911,7 +926,7 @@ input[type="radio"], input[type="submit"] {
   grid-area: housekeeping-header;
 }
 
-.housekeeping-header, .dining-header, .taxi-screen-header, .ws-header, .wakeup-call-header, .explore-header, .account-header {
+.housekeeping-header, .dining-header, .taxi-screen-header, .ws-header, .wakeup-call-header, .explore-header, .Billing-header {
   font-size: 2rem;
   font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
   font-weight: 200;
@@ -1099,6 +1114,9 @@ input[type="radio"], input[type="submit"] {
 
 .transportation-radiogroup .lux-lbl {
   grid-area: lux-lbl;
+  font-size: 12px;
+  margin-right: 5px;
+  margin-left: 5px;
   /* margin-right: 2%; */
   /* margin-left: -25px; */
 }
@@ -1110,7 +1128,9 @@ input[type="radio"], input[type="submit"] {
 
 .transportation-radiogroup .shuttle-lbl {
   grid-area: shuttle-lbl;
-  /* margin-right: 2%; */
+  font-size: 12px;
+  margin-left: 5px;
+  margin-right: 5px;
   /* margin-left: -15%; */
 }
 
@@ -1121,6 +1141,9 @@ input[type="radio"], input[type="submit"] {
 
 .transportation-radiogroup .taxi-lbl {
   grid-area: taxi-lbl;
+  font-size: 12px;
+  margin-left: 5px;
+  margin-right: 5px;
   /* margin-right: 2%; */
 }
 
@@ -1143,10 +1166,22 @@ input[type="radio"], input[type="submit"] {
 
 .taxi-form .date-time .booking-date-label {
   grid-area: booking-date-label;
+  text-align: left;
+  font-size: 0.75rem;
+  font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 400;
+  letter-spacing: .07rem;
+  text-transform: uppercase;
 }
 
 .taxi-form .date-time .booking-time-label {
   grid-area: booking-time-label;
+  text-align: left;
+  font-size: 0.75rem;
+  font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 400;
+  letter-spacing: .07rem;
+  text-transform: uppercase;
 }
 
 .taxi-form .date-time .booking-date {
@@ -1459,7 +1494,7 @@ input[type="radio"], input[type="submit"] {
   grid-area: wakeup-form;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto;
+  grid-template-rows: 100px 80px;
   grid-template-areas:
     "date-time"
     "submit-div";
@@ -1481,10 +1516,22 @@ input[type="radio"], input[type="submit"] {
 
 .wakeup-call-form .date-time .booking-date-label {
   grid-area: date-lbl;
+  text-align: left;
+  font-size: 0.75rem;
+  font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 400;
+  letter-spacing: .07rem;
+  text-transform: uppercase;
 }
 
 .wakeup-call-form .date-time .booking-time-label {
   grid-area: time-lbl;
+  text-align: left;
+  font-size: 0.75rem;
+  font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 400;
+  letter-spacing: .07rem;
+  text-transform: uppercase;
 }
 
 .wakeup-call-form .date-time .booking-date {
@@ -1550,7 +1597,7 @@ input[type="radio"], input[type="submit"] {
   /* min-height: 100vh; */
 }
 
-.explore-card, .amenity-card, .amenity-explore-card, .amenity-account-card {
+.explore-card, .amenity-card, .amenity-explore-card, .amenity-Billing-card {
   cursor: pointer;
   margin: 10px;
   width: 13rem;
@@ -1564,13 +1611,13 @@ input[type="radio"], input[type="submit"] {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
-.explore-card:hover, .amenity-card:hover, .amenity-explore-card:hover, .amenity-account-card:hover {
+.explore-card:hover, .amenity-card:hover, .amenity-explore-card:hover, .amenity-Billing-card:hover {
   margin-bottom: -10px;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
 }
 
-.explore-card h1, .amenity-card h1, .amenity-explore-card h1, .amenity-account-card h1 {
+.explore-card h1, .amenity-card h1, .amenity-explore-card h1, .amenity-Billing-card h1 {
   color: #fff;
   padding: 7%;
   margin-top: 100px;
@@ -1582,19 +1629,19 @@ input[type="radio"], input[type="submit"] {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
 }
 
-/**************************account********************************/
-.account-screen {
+/**************************Billing********************************/
+.Billing-screen {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 4fr;
   grid-template-areas:
-    "account-header"
-    "account-content";
+    "Billing-header"
+    "Billing-content";
   /* animation: slide-in .3s forwards; */
 }
 
-.account-screen .account-content {
-  grid-area: account-content;
+.Billing-screen .Billing-content {
+  grid-area: Billing-content;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 50px 70px auto;
@@ -1605,16 +1652,26 @@ input[type="radio"], input[type="submit"] {
   "total-value";
   padding: 5%;
 }
-.account-screen .account-header {
-  grid-area: account-header;
+.Billing-screen .Billing-header {
+  grid-area: Billing-header;
 }
 
-.account-screen .guest-info {
+.Billing-screen .guest-info {
   grid-area: guest-info;
   text-align: left;
+  font-size: 0.9rem;
+  padding-right: 15px;
+  font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: .015rem;
+  color: #4F4F4D;
+  border-bottom: solid 1px #E4E4E3;
+  margin-bottom: 5px;
+
 }
 
-.account-screen .room-info {
+.Billing-screen .room-info {
   grid-area: room-info;
   display: grid;
   grid-template-columns: auto;
@@ -1627,45 +1684,79 @@ input[type="radio"], input[type="submit"] {
 .room-booking-label {
   text-align: left;
   grid-area: room-booking-label;
+  text-transform: uppercase;
+  font-weight: 350;
 }
 
 .room-meta {
-  text-align: right;
-  grid-area: room-meta;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  grid-template-areas:
-  "room-type"
-  "cost"
-  "days-stayed";
+text-align: right;
+grid-area: room-meta;
+display: grid;
+grid-template-columns: 1fr;
+grid-template-rows: auto;
+grid-template-areas:
+"room-type"
+"cost"
+"days-stayed";
 
 }
 .room-type {
   grid-area: room-type;
+  font-size: 0.9rem;
+    padding-right: 15px;
+    font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+    font-weight: 300;
+    line-height: 1.4;
+    letter-spacing: .015rem;
+    color: #4F4F4D;
 }
 .cost {
   grid-area: cost;
+  font-size: 14px;
+  font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: .015rem;
+  color: #4F4F4D;
 }
 .days-stayed {
   grid-area: days-stayed;
+  font-size: 14px;
+  font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: .015rem;
+  color: #4F4F4D;
 }
-.account-screen .booking-tbl {
+.Billing-screen .booking-tbl {
   grid-area: booking-tbl;
   border-bottom: solid 1px #E4E4E3;
 }
 .booking-details .service-price {
   text-align: right;
+  font-size: 14px;
+  font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: .015rem;
+  color: #4F4F4D;
 }
-.account-screen .total-value {
+.Billing-screen .total-value {
   grid-area: total-value;
   text-align: right;
   margin-top: 10px;
+  font-size: 14px;
+  font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: .015rem;
+  color: #4F4F4D;
 }
 
 .amenity-header {
   text-align: left;
   text-transform: uppercase;
+  font-weight: 350;
   margin-bottom: 10px;
   margin-top: 10px;
 }
@@ -1683,6 +1774,13 @@ input[type="radio"], input[type="submit"] {
 .service-name {
   grid-area: service-name;
   text-align: justify;
+  font-size: 0.9rem;
+  padding-right: 15px;
+  font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: .015rem;
+  color: #4F4F4D;
 }
 
 .service-price {
@@ -1691,9 +1789,15 @@ input[type="radio"], input[type="submit"] {
 
 .service-date-time {
   grid-area: service-date-time;
+  font-size: 14px;
+  font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: .015rem;
+  color: #4F4F4D;
 }
 
-/* .amenity-account-card {
+/* .amenity-Billing-card {
   background: url(https://images.pexels.com/photos/164686/pexels-photo-164686.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
 }
 
@@ -1701,7 +1805,7 @@ input[type="radio"], input[type="submit"] {
   background: url(https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80);
 }
 
-.amenity-account-card, .amenity-explore-card {
+.amenity-Billing-card, .amenity-explore-card {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

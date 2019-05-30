@@ -7,7 +7,8 @@ export default class SummaryWSItem extends React.Component {
   state = {
     booking_date: new Date(),
     booking_time: new Date(),
-    reserved: false
+    reserved: false,
+    bookClicked: false
   };
 
   handleRemoveClick = event => {
@@ -69,9 +70,9 @@ export default class SummaryWSItem extends React.Component {
             dateFormat="h:mm aa"
           />
         </div>
-        <div className="remove" onClick={handleRemoveClick}>
+        {!this.state.reserved ? <div className="remove" onClick={handleRemoveClick}>
           remove
-        </div>
+        </div> : <div className="remove"></div> }
         {this.state.reserved ? <div className="book">
           booked
         </div> : <div className="book" onClick={createItemBooking}>

@@ -1,6 +1,6 @@
 import React from 'react'
 import api from '../api'
-export default class Account extends React.Component {
+export default class Billing extends React.Component {
 
   state = {
     bookings: []
@@ -48,7 +48,7 @@ export default class Account extends React.Component {
             <div className="booking-details">
               <div className="service-name">{booking.service.service_name}</div>
               <div className="service-date-time">{booking.booking_date} {booking.booking_time}</div>
-              <div className="service-price">{booking.service.price}</div>
+              <div className="service-price">£{booking.service.price}</div>
             </div>)
           }
         </div>
@@ -64,9 +64,9 @@ export default class Account extends React.Component {
     {
       const room = getRoom()
       return (
-        <div className="account-screen">
-          <div className="account-header">Account</div>
-          <div className="account-content">
+        <div className="Billing-screen">
+          <div className="Billing-header">Billing</div>
+          <div className="Billing-content">
             <div className="guest-info">
               <div className="guest">Guest: {guest.guest_name}</div>
               <div className="check-in">Check-in date: {guest.check_in}</div>
