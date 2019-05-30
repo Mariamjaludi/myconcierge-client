@@ -8,8 +8,8 @@ export default class AmenityImage extends React.Component {
     switch (view) {
       case "Explore":
         return <img className="explore-img" src="https://66.media.tumblr.com/64500e78ce2554216fba526f99ce09b0/tumblr_o1vcv5f6cN1sslvquo1_500.gif" alt="" />
-      case "Billing":
-        return <img className="Billing-img" src="https://images.pexels.com/photos/164686/pexels-photo-164686.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""/>
+      case "Order Summary":
+        return <img className="order-summary-img" src="https://images.pexels.com/photos/164686/pexels-photo-164686.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""/>
       case "Dining":
       case "Housekeeping":
       case "Wellness":

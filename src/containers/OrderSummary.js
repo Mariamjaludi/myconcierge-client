@@ -1,6 +1,6 @@
 import React from 'react'
 import api from '../api'
-export default class Billing extends React.Component {
+export default class OrderSummary extends React.Component {
 
   state = {
     bookings: []
@@ -64,9 +64,9 @@ export default class Billing extends React.Component {
     {
       const room = getRoom()
       return (
-        <div className="Billing-screen">
-          <div className="Billing-header">Billing</div>
-          <div className="Billing-content">
+        <div className="order-summary-screen">
+          <div className="order-summary-header">Order Summary</div>
+          <div className="order-summary-content">
             <div className="guest-info">
               <div className="guest">Guest: {guest.guest_name}</div>
               <div className="check-in">Check-in date: {guest.check_in}</div>

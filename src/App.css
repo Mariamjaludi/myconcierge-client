@@ -262,6 +262,7 @@ input[type="radio"], input[type="submit"] {
 
 .login-screen .next-button {
   grid-area: login-button;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 /*              guest home screen              */
@@ -389,13 +390,13 @@ input[type="radio"], input[type="submit"] {
   /* animation: slide-in .3s forwards; */
 }
 
-.dining, .housekeeping-screen, .taxi-screen, .wellness-salon-screen, .wakeup-call-screen, .explore-screen .Billing-screen {
+.dining, .housekeeping-screen, .taxi-screen, .wellness-salon-screen, .wakeup-call-screen, .explore-screen .order-summary-screen {
   background: #fff;
   height: 100vh;
   /* animation: slide-in .3s forwards; */
 }
 
-.amenity-page .Billing-screen, .amenity-page .explore-screen {
+.amenity-page .order-summary-screen, .amenity-page .explore-screen {
   background: #fff;
   min-height: 100vh;
 }
@@ -926,7 +927,7 @@ input[type="radio"], input[type="submit"] {
   grid-area: housekeeping-header;
 }
 
-.housekeeping-header, .dining-header, .taxi-screen-header, .ws-header, .wakeup-call-header, .explore-header, .Billing-header {
+.housekeeping-header, .dining-header, .taxi-screen-header, .ws-header, .wakeup-call-header, .explore-header, .order-summary-header {
   font-size: 2rem;
   font-family: 'gill-sans-nova', 'source-han-sans-simplified-c', sans-serif;
   font-weight: 200;
@@ -1597,7 +1598,7 @@ input[type="radio"], input[type="submit"] {
   /* min-height: 100vh; */
 }
 
-.explore-card, .amenity-card, .amenity-explore-card, .amenity-Billing-card {
+.explore-card, .amenity-card, .amenity-explore-card, .amenity-order-summary-card {
   cursor: pointer;
   margin: 10px;
   width: 13rem;
@@ -1611,13 +1612,13 @@ input[type="radio"], input[type="submit"] {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
-.explore-card:hover, .amenity-card:hover, .amenity-explore-card:hover, .amenity-Billing-card:hover {
+.explore-card:hover, .amenity-card:hover, .amenity-explore-card:hover, .amenity-order-summary-card:hover {
   margin-bottom: -10px;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
 }
 
-.explore-card h1, .amenity-card h1, .amenity-explore-card h1, .amenity-Billing-card h1 {
+.explore-card h1, .amenity-card h1, .amenity-explore-card h1, .amenity-order-summary-card h1 {
   color: #fff;
   padding: 7%;
   margin-top: 100px;
@@ -1629,19 +1630,19 @@ input[type="radio"], input[type="submit"] {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
 }
 
-/**************************Billing********************************/
-.Billing-screen {
+/**************************order-summary********************************/
+.order-summary-screen {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 4fr;
   grid-template-areas:
-    "Billing-header"
-    "Billing-content";
+    "order-summary-header"
+    "order-summary-content";
   /* animation: slide-in .3s forwards; */
 }
 
-.Billing-screen .Billing-content {
-  grid-area: Billing-content;
+.order-summary-screen .order-summary-content {
+  grid-area: order-summary-content;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 50px 70px auto;
@@ -1652,11 +1653,11 @@ input[type="radio"], input[type="submit"] {
   "total-value";
   padding: 5%;
 }
-.Billing-screen .Billing-header {
-  grid-area: Billing-header;
+.order-summary-screen .order-summary-header {
+  grid-area: order-summary-header;
 }
 
-.Billing-screen .guest-info {
+.order-summary-screen .guest-info {
   grid-area: guest-info;
   text-align: left;
   font-size: 0.9rem;
@@ -1671,7 +1672,7 @@ input[type="radio"], input[type="submit"] {
 
 }
 
-.Billing-screen .room-info {
+.order-summary-screen .room-info {
   grid-area: room-info;
   display: grid;
   grid-template-columns: auto;
@@ -1728,7 +1729,7 @@ grid-template-areas:
   letter-spacing: .015rem;
   color: #4F4F4D;
 }
-.Billing-screen .booking-tbl {
+.order-summary-screen .booking-tbl {
   grid-area: booking-tbl;
   border-bottom: solid 1px #E4E4E3;
 }
@@ -1741,7 +1742,7 @@ grid-template-areas:
   letter-spacing: .015rem;
   color: #4F4F4D;
 }
-.Billing-screen .total-value {
+.order-summary-screen .total-value {
   grid-area: total-value;
   text-align: right;
   margin-top: 10px;
@@ -1797,7 +1798,7 @@ grid-template-areas:
   color: #4F4F4D;
 }
 
-/* .amenity-Billing-card {
+/* .amenity-order-summary-card {
   background: url(https://images.pexels.com/photos/164686/pexels-photo-164686.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
 }
 
@@ -1805,7 +1806,7 @@ grid-template-areas:
   background: url(https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80);
 }
 
-.amenity-Billing-card, .amenity-explore-card {
+.amenity-order-summary-card, .amenity-explore-card {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

@@ -9,11 +9,11 @@ import ChauffeurTaxiScreen from "../components/ChauffeurTaxiScreen"
 import HousekeepingScreen from "../components/HousekeepingScreen"
 import WakeUpCallScreen from "../components/WakeUpCallScreen"
 import Explore from "./Explore";
-import Billing from "./Billing";
+import OrderSummary from "./OrderSummary";
 
 import NavBar from "../components/NavBar"
 import AmenityImage from '../components/AmenityImage'
-
+import AmenityDesc from '../components/AmenityDesc'
 class GuestHomeScreen extends React.Component {
   state = {
     amenity: null,
@@ -22,7 +22,8 @@ class GuestHomeScreen extends React.Component {
     navClicked: false,
     showConfirmation: false,
     diningChoice: null,
-    showRSSummary: false
+    showRSSummary: false,
+    navHover: false
   };
 
   clickToShowConfirmation = () => {
@@ -72,20 +73,21 @@ class GuestHomeScreen extends React.Component {
       .then(bookings => this.setState({ bookings }));
   };
 
-  exploreOrBillingClicked = exploreOrBilling => {
+  exploreOrOrderSummaryClicked = exploreOrOrderSummary => {
     // document.querySelector('.guest-home-screen').classList.add('hide');
     this.setState({
-      amenity: exploreOrBilling,
-      view: exploreOrBilling,
+      amenity: exploreOrOrderSummary,
+      view: exploreOrOrderSummary,
       navClicked: true
     });
   };
 
-  exploreOrBillingHover = exploreOrBilling => {
+  exploreOrOrderSummaryHover = exploreOrOrderSummary => {
     if (!this.state.navClicked) {
       this.setState({
-        amenity: exploreOrBilling,
-        view: exploreOrBilling
+        amenity: exploreOrOrderSummary,
+        view: exploreOrOrderSummary,
+        navHover: true
       })
     }
   }
@@ -94,7 +96,8 @@ class GuestHomeScreen extends React.Component {
     if (!this.state.navClicked) {
       this.setState({
         amenity,
-        view: amenity.amenity_name
+        view: amenity.amenity_name,
+        navHover: true
       })
     }
   }
@@ -103,7 +106,8 @@ class GuestHomeScreen extends React.Component {
     if (!this.state.navClicked) {
       this.setState({
         amenity: null,
-        view: ''
+        view: '',
+        navHover: false
       })
     }
   }
@@ -191,9 +195,9 @@ class GuestHomeScreen extends React.Component {
             clearAmenity={clearAmenity}
           />
         );
-      case "Billing":
+      case "Order Summary":
         return (
-          <Billing
+          <OrderSummary
             guest={guest}
             hotel={hotel}
             clearAmenity={clearAmenity}
@@ -215,15 +219,43 @@ class GuestHomeScreen extends React.Component {
       case "Salon":
       case "Wake Up Call":
       case "Explore":
-      case "Billing":
+      case "Order Summary":
         return <AmenityImage amenity={amenity} view={view}/>
+    }
+  }
+
+  descRenderFunction = () => {
+    const { view } = this.state;
+    switch (view) {
+      default:
+      return null;
+      case "Dining":
+      case "Housekeeping":
+      case "Chauffeur/Taxi":
+      case "Wellness":
+      case "Salon":
+      case "Wake Up Call":
+      case "Explore":
+      case "Order Summary":
+        return <AmenityDesc amenityName={view}/>
+    }
+  }
+
+  amenityPageRender = () => {
+    const {view, navClicked, navHover} = this.state
+    if (view && navClicked) {
+      this.renderFunction()
+    } else if (view && navHover) {
+      this.descRenderFunction()
+    } else {
+      return null;
     }
   }
 
   render() {
 
     const { hotel, loggedIn, logOut, guest } = this.props;
-    const { onLinkClick, exploreOrBillingClicked, exploreOrBillingHover, onLinkHover, handleHover, handleHoverOff, handleLogoClick } = this
+    const { onLinkClick, exploreOrOrderSummaryClicked, exploreOrOrderSummaryHover, onLinkHover, handleHover, handleHoverOff, handleLogoClick } = this
     const {view, amenity, navClicked} = this.state
     // debugger
     if (hotel) {
@@ -235,12 +267,12 @@ class GuestHomeScreen extends React.Component {
             guest={guest}
             hotel={hotel}
             onLinkClick={onLinkClick}
-            exploreOrBillingClicked={exploreOrBillingClicked}
+            exploreOrOrderSummaryClicked={exploreOrOrderSummaryClicked}
             loggedIn={loggedIn}
             logOut={logOut}
             onLinkHover={onLinkHover}
             handleHover={handleHover}
-            exploreOrBillingHover={exploreOrBillingHover}
+            exploreOrOrderSummaryHover={exploreOrOrderSummaryHover}
             handleHoverOff={handleHoverOff}
             handleLogoClick={handleLogoClick}
           />

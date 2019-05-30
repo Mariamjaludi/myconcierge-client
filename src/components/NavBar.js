@@ -2,7 +2,7 @@ import React from "react";
 import NavLink from "./NavLink";
 export default class NavBar extends React.Component {
   render() {
-    const { guest, onLinkClick, exploreOrBillingClicked, exploreOrBillingHover, hotel, handleHover, handleHoverOff, handleLogoClick } = this.props;
+    const { guest, onLinkClick, exploreOrOrderSummaryClicked, exploreOrOrderSummaryHover, hotel, handleHover, handleHoverOff, handleLogoClick } = this.props;
     return (
       <div className="navbar">
         <div onClick={handleLogoClick} className="logo"></div>
@@ -21,17 +21,17 @@ export default class NavBar extends React.Component {
           <div
             id="Explore"
             className="amenity-link"
-            onClick={() => exploreOrBillingClicked("Explore")}
-            onMouseEnter={() => exploreOrBillingHover("Explore")}
+            onClick={() => exploreOrOrderSummaryClicked("Explore")}
+            onMouseEnter={() => exploreOrOrderSummaryHover("Explore")}
             onMouseLeave={() => handleHoverOff()}
           >Explore the City</div>
           <div
-            id="Billing"
+            id="Order-Summary"
             className="amenity-link"
-            onClick={() => exploreOrBillingClicked("Billing")}
-            onMouseEnter={() => exploreOrBillingHover("Billing")}
+            onClick={() => exploreOrOrderSummaryClicked("Order Summary")}
+            onMouseEnter={() => exploreOrOrderSummaryHover("Order Summary")}
             onMouseLeave={() => handleHoverOff()}
-          >Billing</div>
+          >Order Summary</div>
         </div>
         <div className="logout" onClick={this.props.logOut}>Log Out</div>
         <div className="myConcierge-footer"></div>
