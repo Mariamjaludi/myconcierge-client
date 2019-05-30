@@ -48,7 +48,7 @@ export default class OrderSummary extends React.Component {
             <div className="booking-details">
               <div className="service-name">{booking.service.service_name}</div>
               <div className="service-date-time">{booking.booking_date} {booking.booking_time}</div>
-              <div className="service-price">£{booking.service.price}</div>
+              <div className="service-price">{booking.service.price ? "£" : null}{booking.service.price}</div>
             </div>)
           }
         </div>
@@ -83,6 +83,9 @@ export default class OrderSummary extends React.Component {
             {displayBookings("Dining")}
             {displayBookings("Wellness")}
             {displayBookings("Salon")}
+            {displayBookings("Chauffeur/Taxi")}
+            {displayBookings("Housekeeping")}
+            {displayBookings("Wake Up Call")}
             </div>
             <div className="total-value">Total: £{this.getTotal()}</div>
           </div>
