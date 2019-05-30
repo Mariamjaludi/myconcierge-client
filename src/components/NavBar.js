@@ -7,7 +7,7 @@ export default class NavBar extends React.Component {
       <div className="navbar">
         <div onClick={handleLogoClick} className="logo"></div>
         <div className="hotel-name">{hotel.hotel_name}</div>
-        <div className="guestWelcome">Welcome, {guest.guest_name}</div>
+        <div className="guestWelcome">Welcome, { guest ? guest.guest_name : null }</div>
         <div className="amenity-links">
           {hotel.amenities.map(a => (
             <NavLink
