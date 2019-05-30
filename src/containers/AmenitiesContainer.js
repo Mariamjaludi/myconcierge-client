@@ -3,7 +3,7 @@ import AmenityCard from "../components/AmenityCard";
 // import Header from '../components/Header.js'
 export default class AmenitiesContainer extends React.Component {
   render() {
-    const { hotel, onCardClick, handleAccountorExploreClick } = this.props;
+    const { hotel, onCardClick, handleOrderSummaryorExploreClick } = this.props;
     return (
       <div className="amenities">
         <div className="wrap">
@@ -17,16 +17,16 @@ export default class AmenitiesContainer extends React.Component {
             />
           ))}
           <div
-            onClick={() => handleAccountorExploreClick("Explore")}
+            onClick={() => handleOrderSummaryorExploreClick("Explore")}
             className="amenity-explore-card"
           >
             <h1>Explore the City</h1>
           </div>
           <div
-            onClick={() => handleAccountorExploreClick("Account")}
-            className="amenity-account-card"
+            onClick={() => handleOrderSummaryorExploreClick("Order Summary")}
+            className="amenity-order-summary-card"
           >
-            <h1>Account</h1>
+            <h1>Order Summary</h1>
           </div>
         </div>
       </div>

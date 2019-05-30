@@ -8,7 +8,8 @@ import DiningOrderContainer from "./DiningOrderContainer";
 export default class ConfirmRoomServiceScreen extends React.Component {
   state = {
     booking_date: new Date(),
-    booking_time: new Date()
+    booking_time: new Date(),
+    reserved: false
   };
 
   handleDateChange = event => {
@@ -26,8 +27,11 @@ export default class ConfirmRoomServiceScreen extends React.Component {
     const { booking_date, booking_time } = this.state;
     let date = booking_date.toDateString()
     let time = booking_time.toLocaleTimeString().slice(0, -3)
-    order.forEach(o => createBooking(o, date, time));
-    // clearAmenity();
+    if (order > 0) {
+      order.forEach(o => createBooking(o, date, time));
+      // clearAmenity();
+      this.setState({reserved: true})
+    }
   };
 
   orderSum = (orders) => {
@@ -77,6 +81,7 @@ export default class ConfirmRoomServiceScreen extends React.Component {
             </div>
           </div>
         </form>
+        {this.state.reserved ? <div className="confirm-msg">Reservation Confirmed</div> : null}
       </div>
     );
   }

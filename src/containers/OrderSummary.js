@@ -1,6 +1,6 @@
 import React from 'react'
 import api from '../api'
-export default class Account extends React.Component {
+export default class OrderSummary extends React.Component {
 
   state = {
     bookings: []
@@ -48,7 +48,7 @@ export default class Account extends React.Component {
             <div className="booking-details">
               <div className="service-name">{booking.service.service_name}</div>
               <div className="service-date-time">{booking.booking_date} {booking.booking_time}</div>
-              <div className="service-price">{booking.service.price}</div>
+              <div className="service-price">£{booking.service.price}</div>
             </div>)
           }
         </div>
@@ -64,26 +64,28 @@ export default class Account extends React.Component {
     {
       const room = getRoom()
       return (
-        <div className="account-screen">
-          <div className="account-header">Account</div>
-          <div className="guest-info">
-            <div className="guest">Guest: {guest.guest_name}</div>
-            <div className="check-in">Check-in date: {guest.check_in}</div>
-          </div>
-          <div className="room-info">
-            <div className="room-booking-label">Room Booking</div>
-            <div className="room-meta">
-              <div className="room-type">{room.room_type}</div>
-              <div className="cost">£ {room.cost_per_night} (per night)</div>
-              <div className="days-stayed">Days stayed: {guest.days_stayed}</div>
+        <div className="order-summary-screen">
+          <div className="order-summary-header">Order Summary</div>
+          <div className="order-summary-content">
+            <div className="guest-info">
+              <div className="guest">Guest: {guest.guest_name}</div>
+              <div className="check-in">Check-in date: {guest.check_in}</div>
             </div>
+            <div className="room-info">
+              <div className="room-booking-label">Room Booking</div>
+              <div className="room-meta">
+                <div className="room-type">{room.room_type}</div>
+                <div className="cost">£ {room.cost_per_night} (per night)</div>
+                <div className="days-stayed">Days stayed: {guest.days_stayed}</div>
+              </div>
+            </div>
+            <div className="booking-tbl">
+            {displayBookings("Dining")}
+            {displayBookings("Wellness")}
+            {displayBookings("Salon")}
+            </div>
+            <div className="total-value">Total: £{this.getTotal()}</div>
           </div>
-          <div className="booking-tbl">
-          {displayBookings("Dining")}
-          {displayBookings("Wellness")}
-          {displayBookings("Salon")}
-        </div>
-          <div className="total-value">Total: £{this.getTotal()}</div>
         </div>
       )
     } else return <div />

@@ -5,7 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 export default class WakeUpCallScreen extends React.Component {
   state = {
     booking_date: new Date(),
-    booking_time: new Date()
+    booking_time: new Date(),
+    reserved: false
   };
 
   handleDateChange = date => {
@@ -27,7 +28,10 @@ export default class WakeUpCallScreen extends React.Component {
 
     let date = booking_date.toDateString();
     let time = booking_time.toLocaleTimeString().slice(0, -3);
-    createBooking(wakeUpCall[0], date, time);
+    if (wakeUpCall.length > 0) {
+      createBooking(wakeUpCall[0], date, time);
+      this.setState({reserved: true})
+    }
   };
 
   render() {
@@ -37,37 +41,33 @@ export default class WakeUpCallScreen extends React.Component {
       <div className="wakeup-call-screen">
         <div className="wakeup-call-header">Wake Up Call</div>
         <form className="wakeup-call-form" onSubmit={handleSubmit}>
-          <label className="booking-date-label" htmlFor="booking_date">
-            Date
-          </label>
-          <DatePicker
-            className="date-picker"
-            selected={booking_date}
-            onChange={handleDateChange}
-          />
-          <label htmlFor="booking_time">Pick Up Time</label>
-          <DatePicker
-            className="time-picker"
-            selected={booking_time}
-            onChange={handleTimeChange}
-            showTimeSelect
-            showTimeSelectOnly
-            timeIntervals={30}
-            dateFormat="h:mm aa"
-          />
-        <hr />
-        <input type="submit" value="CONFIRM" />
+          <div className="date-time">
+            <label className="booking-date-label" htmlFor="booking_date">
+              Date
+            </label>
+            <DatePicker
+              className="date-picker"
+              selected={booking_date}
+              onChange={handleDateChange}
+            />
+          <label className="booking-time-label" htmlFor="booking_time">Pick Up Time</label>
+            <DatePicker
+              className="time-picker"
+              selected={booking_time}
+              onChange={handleTimeChange}
+              showTimeSelect
+              showTimeSelectOnly
+              timeIntervals={30}
+              dateFormat="h:mm aa"
+            />
+          </div>
+          <div className="submit-div">
+            {this.state.reserved ? <div className="confirm-msg">Reservation Confirmed</div> : null}
+            <div className="submit-btn-div">
+              <input className="submit-btn" type="submit" value="Confirm" />
+            </div>
+          </div>
         </form>
-        <div className="wakeup-call-footer">
-          <button
-            className="next-button"
-            onClick={this.props.clearAmenity}
-            type="button"
-          >
-            ←
-          </button>
-          <span>MAIN MENU</span>
-        </div>
       </div>
     )
   }

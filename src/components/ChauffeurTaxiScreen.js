@@ -7,7 +7,8 @@ export default class ChauffeurTaxiScreen extends React.Component {
   state = {
     booking_date: new Date(),
     booking_time: new Date(),
-    transportType: ""
+    transportType: "",
+    reserved: false
   };
 
   handleChange = e => {
@@ -32,11 +33,13 @@ export default class ChauffeurTaxiScreen extends React.Component {
     const transportation = services.filter(
       service => service.service_name === transportType
     );
-    // debugger
+    debugger
     let date = booking_date.toDateString();
     let time = booking_time.toLocaleTimeString().slice(0, -3);
-    createBooking(transportation[0], date, time);
-
+    if (transportation.length > 0) {
+      createBooking(transportation[0], date, time);
+      this.setState({reserved: true})
+    }
   };
 
   render() {
@@ -94,8 +97,11 @@ export default class ChauffeurTaxiScreen extends React.Component {
               dateFormat="h:mm aa"
             />
         </div>
-        <div className="submit-btn">
-          <input type="submit" value="RESERVE" />
+        <div className="submit-div">
+          {this.state.reserved ? <div className="confirm-msg">Reservation Confirmed</div> : null}
+          <div className="submit-btn-div">
+            <input className="submit-btn" type="submit" value="Confirm" />
+          </div>
         </div>
         </form>
       </div>

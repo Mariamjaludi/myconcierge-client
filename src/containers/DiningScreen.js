@@ -5,22 +5,22 @@ import ConfirmRoomServiceScreen from "./ConfirmRoomServiceScreen";
 
 export default class DiningScreen extends React.Component {
   state = {
-    diningChoice: null,
     order: [],
     switchToDining4: false
   };
 
   handleClick = event => {
-    this.setState({
-      diningChoice: event.target.id
-    });
+    this.props.clickToShowReserveOrRoomService(event.target.id)
+    // this.setState({
+    //   diningChoice: event.target.id
+    // });
   };
 
   saveOrder = order => {
     this.setState({
-      order: order,
-      switchToDining4: true
+      order: order
     });
+    this.props.clicktoShowRSSummary()
   };
 
   editOrder = food => {
@@ -51,13 +51,9 @@ export default class DiningScreen extends React.Component {
     );
   };
 
-  // handleReturnButtonClick = () => {
-  //   this.props.clearAmenity()
-  // }
-
   renderFunction = () => {
-    const { services, guest, createBooking, clearAmenity } = this.props;
-    const { diningChoice, switchToDining4, order } = this.state;
+    const { services, guest, createBooking, clearAmenity, diningChoice, showRSSummary } = this.props;
+    const { switchToDining4, order } = this.state;
     const { saveOrder, editOrder } = this;
     if (!diningChoice) {
       return this.renderRoomServiceOrReserveTable();
@@ -71,7 +67,7 @@ export default class DiningScreen extends React.Component {
         />
       );
     } else if (diningChoice === "room-service") {
-      if (!switchToDining4) {
+      if (!showRSSummary) {
         return (
           <RoomServiceScreen
             services={services}
