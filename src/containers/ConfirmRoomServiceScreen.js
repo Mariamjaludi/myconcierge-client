@@ -72,9 +72,9 @@ export default class ConfirmRoomServiceScreen extends React.Component {
           <div className="order-sum">Total: {orderSum(order)}</div>
           <div className="cancel-and-submit">
             <div className="submit-btn">
-              <input type="submit" value="Order" />
+              <button className="btn" type="submit" value="Order" >Order</button>
             </div>
-            <div className="cancel-btn">
+            <div className="cancel-btn btn">
               <button onClick={clearAmenity} type="button" value="Cancel">Cancel Order</button>
             </div>
           </div>

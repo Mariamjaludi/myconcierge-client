@@ -23,6 +23,18 @@
   color: #61dafb;
 }
 
+.btn {
+  box-shadow: none;
+    width: 6rem;
+    height: 2rem;
+    letter-spacing: .125rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    -webkit-transition: .5s;
+    transition: .5s;
+    cursor: pointer;
+}
+
 .date-picker, .time-picker {
   border: none;
   border-bottom: solid 1px #E4E4E3;
@@ -1054,6 +1066,13 @@ input[type="radio"], input[type="submit"] {
   width: 6rem;
   height: 2rem;
 }
+
+box-shadow: none;
+width: 6rem;
+height: 2rem;
+letter-spacing: .125rem;
+text-transform: uppercase;
+font-weight: 400;
 
 /**************************chauffeur/taxi screen********************/
 .taxi-screen {
