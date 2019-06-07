@@ -44,9 +44,9 @@ Alternatively, for a faster API response time, the backend repository can be fou
 
 ## Demo
 
-![myConcierge Demo](https://i.makeagif.com/media/6-07-2019/6ZI2zc.gif)
+[![myConcierge Demo](http://img.youtube.com/vi/E6CHLd-bafc/0.jpg)](http://www.youtube.com/watch?v=E6CHLd-bafc "myConcierge Demo")
 
-You can find a youtube demo of the application [here](https://youtu.be/E6CHLd-bafc).
+You can find a demo of the application [here](https://youtu.be/E6CHLd-bafc).
 
 ## Built With
 
