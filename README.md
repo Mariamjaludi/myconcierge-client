@@ -31,7 +31,11 @@ Alternatively, for a faster API response time, the backend repository can be fou
 
 ## Demo
 
+[![myConcierge Demo](http://img.youtube.com/vi/eMXua9Lt5Kg/0.jpg)](http://www.youtube.com/watch?v=eMXua9Lt5Kg "myConcierge Demo")
+
 You can find a demo of the application [here].
+
+
 
 ## Built With
 

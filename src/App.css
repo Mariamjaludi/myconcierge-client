@@ -1093,7 +1093,7 @@ font-weight: 400;
   grid-area: taxi-form;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 10% 8% 15% 10%;
+  grid-template-rows: 50px 60px 50px 20px;
   grid-template-areas:
     "transportation-type-header"
     "transportation-radiogroup"
@@ -1176,7 +1176,7 @@ font-weight: 400;
   grid-template-areas:
     "booking-date-label booking-time-label"
     "booking-date booking-time";
-  border-bottom: solid 1px #E4E4E3;
+  /* border-bottom: solid 1px #E4E4E3; */
   margin-bottom: 2%;
 }
 
