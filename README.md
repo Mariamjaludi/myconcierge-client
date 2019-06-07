@@ -27,7 +27,11 @@ The api has the following end-points: <br>
 
 Alternatively, for a faster API response time, the backend repository can be found [here](https://github.com/Mariamjaludi/myConcierge-backend).
 
-*See README instructions within the backend repository for installation and deployment instructions.*
+..*See README instructions within the backend repository for installation and deployment instructions.*
+
+## Demo
+
+You can find a demo of the application [here].
 
 ## Built With
 
