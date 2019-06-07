@@ -21,9 +21,9 @@ The page will reload if you make edits. You will also see any lint errors in the
 Note: The backend API of this application is currently hosted on [Heroku](https://myconcierge-app-api.herokuapp.com/).
 
 The api has the following end-points: <br>
-[/hotels](https://myconcierge-app-api.herokuapp.com/hotels) <br>
-[/guests](https://myconcierge-app-api.herokuapp.com/guests) <br>
-[/bookings](https://myconcierge-app-api.herokuapp.com/guests) <br>
+* [/hotels](https://myconcierge-app-api.herokuapp.com/hotels) <br>
+* [/guests](https://myconcierge-app-api.herokuapp.com/guests) <br>
+* [/bookings](https://myconcierge-app-api.herokuapp.com/guests) <br>
 
 Alternatively, for a faster API response time, the backend repository can be found [here](https://github.com/Mariamjaludi/myConcierge-backend).
 
