@@ -18,12 +18,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits. You will also see any lint errors in the console.
 
-Note: The backend API of this application is currently hosted on [Heroku](https://myconcierge-app-api.herokuapp.com/)
+Note: The backend API of this application is currently hosted on [Heroku](https://myconcierge-app-api.herokuapp.com/).
 
 The api has the following end-points: <br>
 [https://myconcierge-app-api.herokuapp.com/hotels](https://myconcierge-app-api.herokuapp.com/hotels) <br>
-[https://myconcierge-app-api.herokuapp.com/guests](https://myconcierge-app-api.herokuapp.com/guests)
-[https://myconcierge-app-api.herokuapp.com/bookings](https://myconcierge-app-api.herokuapp.com/guests)
+[https://myconcierge-app-api.herokuapp.com/guests](https://myconcierge-app-api.herokuapp.com/guests) <br>
+[https://myconcierge-app-api.herokuapp.com/bookings](https://myconcierge-app-api.herokuapp.com/guests) <br>
 
 ### `npm test`
 
