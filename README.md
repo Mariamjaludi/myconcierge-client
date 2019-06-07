@@ -16,7 +16,7 @@ The myConcierge app can be set up in every hotel room via a tablet or other devi
 * A guest can view his hotel billing.
 
 ## Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 NPM program. The NPM program is already installed on your computer when you install Node.js
@@ -41,6 +41,20 @@ The api has the following end-points: <br>
 Alternatively, for a faster API response time, the backend repository can be found [here](https://github.com/Mariamjaludi/myConcierge-backend).
 
 ##### *See README instructions within the backend repository for installation and deployment instructions.*
+
+In api.js, change:
+
+```javascript
+const API_BASE_URL = `https://myconcierge-app-api.herokuapp.com`;
+// const API_BASE_URL = `http://localhost:3000`;
+```
+
+to:
+
+```javascript
+// const API_BASE_URL = `https://myconcierge-app-api.herokuapp.com`;
+const API_BASE_URL = `http://localhost:3000`;
+```
 
 ## Demo
 
