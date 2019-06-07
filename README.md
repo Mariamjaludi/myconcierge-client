@@ -2,7 +2,7 @@
 # myConcierge
 ### Front-End
 
-# Getting Started
+## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
@@ -16,15 +16,14 @@ Run `npm start` to run the app in development mode. <br>
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+The page will reload if you make edits. You will also see any lint errors in the console.
 
-Note: The backend API of this application is currently hosted on [Heroku] (https://myconcierge-app-api.herokuapp.com/)
+Note: The backend API of this application is currently hosted on [Heroku](https://myconcierge-app-api.herokuapp.com/)
 
-The api has the following end-points:
-https://myconcierge-app-api.herokuapp.com/hotels
-https://myconcierge-app-api.herokuapp.com/guests
-https://myconcierge-app-api.herokuapp.com/bookings
+The api has the following end-points: <br>
+[https://myconcierge-app-api.herokuapp.com/hotels](https://myconcierge-app-api.herokuapp.com/hotels) <br>
+[https://myconcierge-app-api.herokuapp.com/guests](https://myconcierge-app-api.herokuapp.com/guests)
+[https://myconcierge-app-api.herokuapp.com/bookings](https://myconcierge-app-api.herokuapp.com/guests)
 
 ### `npm test`
 
