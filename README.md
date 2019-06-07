@@ -16,7 +16,7 @@ The myConcierge app can be set up in every hotel room via a tablet or other devi
 * A guest can view his hotel billing.
 
 ## Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
 ### Prerequisites
 NPM program. The NPM program is already installed on your computer when you install Node.js
