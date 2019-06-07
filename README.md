@@ -1,6 +1,5 @@
 
 # myConcierge
-###### Front-End
 myConcierge is a service booking application designed for the luxury hotel sector.  Its aim is to give customers a more personalised, simple and efficient booking experience. Hotel guests can easily request one or multiple services at the click of a button, without needing to leave the comfort of their beds.
 
 ## Getting Started
