@@ -1,6 +1,7 @@
 
 # myConcierge
-### Front-End
+###### Front-End
+myConcierge is a service booking application designed for the luxury hotel sector.  Its aim is to give customers a more personalised, simple and efficient booking experience. Hotel guests can easily request one or multiple services at the click of a button, without needing to leave the comfort of their beds.
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -37,6 +38,7 @@ You can find a demo of the application [here].
 
 * The React Framework.
 * Pure CSS for styling.
+* Back-end and API built with Ruby on Rails.
 
 ## Author
 
