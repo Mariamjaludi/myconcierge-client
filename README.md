@@ -1,24 +1,30 @@
 
 # myConcierge
-======
 ### Front-End
 
 # Getting Started
-------
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Prerequisites
+NPM program. The NPM program is already installed on your computer when you install Node.js
 
-## Available Scripts
+### Installing
 
-In the project directory, you can run:
+Run `npm install` to install NPM packages.<br>
 
-### `npm start`
+Run `npm start` to run the app in development mode. <br>
 
-Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
+
+Note: The backend API of this application is currently hosted on [Heroku] (https://myconcierge-app-api.herokuapp.com/)
+
+The api has the following end-points:
+https://myconcierge-app-api.herokuapp.com/hotels
+https://myconcierge-app-api.herokuapp.com/guests
+https://myconcierge-app-api.herokuapp.com/bookings
 
 ### `npm test`
 
